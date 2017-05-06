@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Teamify.Models;
+using Teamify.Models.Account;
+using Teamify.Models.Manage;
 
 namespace Teamify.Controllers
 {
