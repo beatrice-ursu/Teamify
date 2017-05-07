@@ -11,7 +11,7 @@ namespace Teamify.Controllers
 
         public BaseController()
         {
-            Db = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+            Db = new ApplicationDbContext();
         }
     }
 }
