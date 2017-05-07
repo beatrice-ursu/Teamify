@@ -7,12 +7,8 @@ using Teamify.Models.Sport;
 
 namespace Teamify.Controllers
 {
-    public class SportController : Controller
+    public class SportController : BaseController
     {
         // GET: Sport
-        public ActionResult AddSportView()
-        {
-            return View("AddSportView", new Sport());
-        }
     }
 }
