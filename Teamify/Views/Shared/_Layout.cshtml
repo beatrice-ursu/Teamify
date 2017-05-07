@@ -18,7 +18,7 @@
 
         <div class="collapse navbar-collapse" id="mainNavbar">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item @Html.IsCurrent("Home", "Index")">
+                @*<li class="nav-item @Html.IsCurrent("Home", "Index")">
                     <a class="nav-link" href="@Url.Action("Index", "Home")">Dashboard <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item @Html.IsCurrent("Home", "About")">
@@ -26,7 +26,7 @@
                 </li>
                 <li class="nav-item @Html.IsCurrent("Home", "Contact")">
                     <a class="nav-link" href="@Url.Action("Contact", "Home")">Contact <span class="sr-only">(current)</span></a>
-                </li>
+                </li>*@
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
@@ -37,43 +37,26 @@
             <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+                        <div class="dropdown-divider"></div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Reports</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Analytics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Export</a>
+                        <a class="nav-link" href="@Url.Action("Index", "Home")">Dashboard</a>
                     </li>
                 </ul>
-
+                @Html.Action("GetSportsList", "Layout")
+                @*@Html.Partial("_SportsListPartial")*@
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Nav item</a>
+                        <div class="dropdown-divider"></div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Nav item again</a>
+                        <input class="form-control" type="text" placeholder="Search profile">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">One more nav</a>
+                        <a class="nav-link" href="#">My Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Another nav item</a>
-                    </li>
-                </ul>
-
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Nav item again</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">One more nav</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Another nav item</a>
+                        <div class="dropdown-divider"></div>
                     </li>
                 </ul>
             </nav>
@@ -83,33 +66,34 @@
                 @RenderBody()
 
                 @*<section class="row text-center placeholders">
-                    <div class="col-6 col-sm-3 placeholder">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-                        <h4>Label</h4>
-                        <div class="text-muted">Something else</div>
-                    </div>
-                    <div class="col-6 col-sm-3 placeholder">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-                        <h4>Label</h4>
-                        <span class="text-muted">Something else</span>
-                    </div>
-                    <div class="col-6 col-sm-3 placeholder">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-                        <h4>Label</h4>
-                        <span class="text-muted">Something else</span>
-                    </div>
-                    <div class="col-6 col-sm-3 placeholder">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-                        <h4>Label</h4>
-                        <span class="text-muted">Something else</span>
-                    </div>
-                </section>*@
+                        <div class="col-6 col-sm-3 placeholder">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+                            <h4>Label</h4>
+                            <div class="text-muted">Something else</div>
+                        </div>
+                        <div class="col-6 col-sm-3 placeholder">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+                            <h4>Label</h4>
+                            <span class="text-muted">Something else</span>
+                        </div>
+                        <div class="col-6 col-sm-3 placeholder">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+                            <h4>Label</h4>
+                            <span class="text-muted">Something else</span>
+                        </div>
+                        <div class="col-6 col-sm-3 placeholder">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+                            <h4>Label</h4>
+                            <span class="text-muted">Something else</span>
+                        </div>
+                    </section>*@
             </main>
         </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/layout.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
