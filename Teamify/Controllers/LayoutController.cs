@@ -7,22 +7,16 @@ using Teamify.Models.Sport;
 
 namespace Teamify.Controllers
 {
-    public class LayoutController : Controller
+    public class LayoutController : BaseController
     {
         // GET: Layout
-        //use DB here 
         public ActionResult GetSportsList()
         {
-            var model = new List<Sport>();
-            for (int i = 0; i < 4; i++)
+            var model = Db.Sports.Select(x => new SportModel
             {
-                var newSport = new Sport
-                {
-                    Name = "Sport" + i
-                };
-                model.Add(newSport);
-            }
-
+                Name = x.Name
+            }).ToList();
+            
             return PartialView("_SportsListPartial", model);
         }
 }
