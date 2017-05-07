@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Teamify.DL;
+using Teamify.DL.Entities;
 using Teamify.Models;
 
 namespace Teamify
