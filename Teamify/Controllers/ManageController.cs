@@ -13,7 +13,7 @@ using Teamify.Models.Manage;
 namespace Teamify.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
