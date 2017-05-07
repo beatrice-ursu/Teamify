@@ -48,6 +48,15 @@
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation, Version=6.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.4.0\lib\Net45\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc, Version=6.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.MVC5.6.4.0\lib\Net45\FluentValidation.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.WebApi, Version=6.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.WebApi.6.4.0\lib\Net45\FluentValidation.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.7\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
     </Reference>
@@ -218,6 +227,10 @@
     <Compile Include="Migrations\201705071648149_Initial.Designer.cs">
       <DependentUpon>201705071648149_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705071812115_rename.cs" />
+    <Compile Include="Migrations\201705071812115_rename.Designer.cs">
+      <DependentUpon>201705071812115_rename.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DL\ApplicationDbContext.cs" />
     <Compile Include="DL\Entities\ApplicationUser.cs" />
@@ -242,6 +255,7 @@
     <Compile Include="Models\Sport\SportModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Validators\AddSportRequestValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -338,6 +352,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705071648149_Initial.resx">
       <DependentUpon>201705071648149_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705071812115_rename.resx">
+      <DependentUpon>201705071812115_rename.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

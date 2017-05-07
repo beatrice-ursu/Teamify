@@ -10,7 +10,7 @@ namespace Teamify.DL.Entities
         public string SportName { get; set; }
         [Required]
         public string SportDescription { get; set; }
-        public string SprotRules { get; set; }
+        public string SportRules { get; set; }
         [DefaultValue(AddSportRequestStatus.Pending)]
         public AddSportRequestStatus RequestStatus { get; set; }
     }

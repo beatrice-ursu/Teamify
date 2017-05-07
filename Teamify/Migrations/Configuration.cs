@@ -52,7 +52,7 @@ namespace Teamify.Migrations
                 {
                     var newUser = new ApplicationUser
                     {
-                        UserName = "robert",
+                        UserName = "robnvd01@gmail.com",
                         Email = "robnvd01@gmail.com",
                         PhoneNumber = "0746614189",
                         EmailConfirmed = true,
@@ -79,7 +79,7 @@ namespace Teamify.Migrations
                 {
                     var newUser = new ApplicationUser
                     {
-                        UserName = "beatrice",
+                        UserName = "beatrisuu@gmail.com",
                         Email = "beatrisuu@gmail.com",
                         PhoneNumber = "0746614189",
                         EmailConfirmed = true,
@@ -133,7 +133,7 @@ namespace Teamify.Migrations
             {
                 SportName = "Hochei",
                 SportDescription = "Se joaca pe gheata",
-                SprotRules = "Se da cu batu in puc"
+                SportRules = "Se da cu batu in puc"
             };
             addSportRequest1.AddAudit(createUser);
 
@@ -141,7 +141,7 @@ namespace Teamify.Migrations
             {
                 SportName = "Baseball",
                 SportDescription = "Se joaca cu bata",
-                SprotRules = "Se da cu bata in minge"
+                SportRules = "Se da cu bata in minge"
             };
             addSportRequest2.AddAudit(createUser);
 
