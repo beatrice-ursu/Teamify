@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Teamify.DL;
+using Teamify.DL.Entities;
 using Teamify.Models;
 using Teamify.Models.Account;
 
