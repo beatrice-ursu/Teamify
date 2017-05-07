@@ -203,6 +203,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DL\ApplicationDbContext.cs" />
     <Compile Include="DL\ApplicationUser.cs" />
