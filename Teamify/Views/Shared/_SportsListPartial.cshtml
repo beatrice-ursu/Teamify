@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Teamify.Models.Sport.Sport>
+
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item">
+        <div class="dropdown-divider"></div>
+    </li>
+    <li class="nav-item">
+        <input class="form-control" type="text" placeholder="Search sport">
+    </li>
+
+@foreach (var item in Model)
+{
+    <li class="nav-item">
+        <a class="nav-link" href="#">@item.Name</a>
+    </li>
+}
+    <li class="nav-item">
+        <a href="@Url.Action("AddSportView", "Sport")" id="btnAddNewSport" class="btn btn-outline-success btn-sm w-100">Request new sport</a>
+    </li>
+</ul>
