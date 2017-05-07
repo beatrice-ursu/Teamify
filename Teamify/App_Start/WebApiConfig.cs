@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using FluentValidation.WebApi;
 using Newtonsoft.Json;
 
 namespace Teamify
@@ -23,8 +22,8 @@ namespace Teamify
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            //config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
             config.Formatters.Add(new BrowserJsonFormatter());
+            FluentValidationModelValidatorProvider.Configure(config);
         }
 
         private class BrowserJsonFormatter : JsonMediaTypeFormatter
