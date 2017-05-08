@@ -16,6 +16,6 @@ namespace Teamify.DL.Entities
         [DefaultValue(5)]
         public float Rating { get; set; }
 
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual User User { get; set; }
     }
 }

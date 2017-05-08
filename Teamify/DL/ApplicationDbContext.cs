@@ -5,7 +5,7 @@ using Teamify.DL.Mappings;
 
 namespace Teamify.DL
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext() : base("TeamifyDB", throwIfV1Schema: false) { }
 

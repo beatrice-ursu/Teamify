@@ -35,8 +35,8 @@ namespace Teamify.Migrations
             {
                 var roleStore = new RoleStore<IdentityRole>(context);
                 var roleManager = new RoleManager<IdentityRole>(roleStore);
-                var userStore = new UserStore<ApplicationUser>(context);
-                var userManager = new UserManager<ApplicationUser>(userStore);
+                var userStore = new UserStore<User>(context);
+                var userManager = new UserManager<User>(userStore);
 
                 // Add missing roles
                 var role = roleManager.FindByName("Administrator");
@@ -50,7 +50,7 @@ namespace Teamify.Migrations
                 var robertUser = userManager.FindByName("robert");
                 if (robertUser == null)
                 {
-                    var newUser = new ApplicationUser
+                    var newUser = new User
                     {
                         UserName = "robnvd01@gmail.com",
                         Email = "robnvd01@gmail.com",
@@ -61,7 +61,7 @@ namespace Teamify.Migrations
                     };
                     newUser.UserProfile = new UserProfile
                     {
-                        ApplicationUser = newUser,
+                        User = newUser,
                         LastName = "Ursu",
                         FirstName = "Robert",
                         Bio = "Genius",
@@ -77,7 +77,7 @@ namespace Teamify.Migrations
                 var beatriceUser = userManager.FindByName("beatrice");
                 if (beatriceUser == null)
                 {
-                    var newUser = new ApplicationUser
+                    var newUser = new User
                     {
                         UserName = "beatrisuu@gmail.com",
                         Email = "beatrisuu@gmail.com",
@@ -89,7 +89,7 @@ namespace Teamify.Migrations
                     };
                     newUser.UserProfile = new UserProfile
                     {
-                        ApplicationUser = newUser,
+                        User = newUser,
                         LastName = "Toma",
                         FirstName = "Beatrice",
                         Bio = "Genius",
@@ -97,7 +97,7 @@ namespace Teamify.Migrations
                     };
                     newUser.UserProfile.AddAudit(newUser);
 
-                    userManager.Create(newUser, "baetricepassword");
+                    userManager.Create(newUser, "beatricepassword");
                     userManager.SetLockoutEnabled(newUser.Id, false);
                     userManager.AddToRole(newUser.Id, "Administrator");
                 }

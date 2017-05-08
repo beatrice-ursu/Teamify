@@ -9,10 +9,10 @@ namespace Teamify.DL.Entities
         [Required]
         public DateTime CreatedOn { get; set; }
         [Required]
-        public ApplicationUser CreatedBy { get; set; }
+        public User CreatedBy { get; set; }
         [Required]
         public DateTime UpdatedOn { get; set; }
         [Required]
-        public ApplicationUser UpdatedBy { get; set; }
+        public User UpdatedBy { get; set; }
     }
 }
