@@ -14,7 +14,9 @@ namespace Teamify.Controllers
         {
             var model = Db.Sports.Select(x => new SportModel
             {
-                Name = x.Name
+                Name = x.Name,
+                SportId = x.SportId
+
             }).ToList();
             
             return PartialView("_SportsListPartial", model);

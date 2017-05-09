@@ -1,0 +1,15 @@
+﻿@model Teamify.Models.Sport.SportModel
+
+@{
+    ViewBag.Title = "Sport Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <div class="card">
+        <h3 class="card-header">@Model.Name</h3>
+        <div class="card-block">
+            <h4 class="card-title">@Model.Description</h4>
+            <p class="card-text">@Model.Rules</p>
+        </div>
+    </div>
+</div>

@@ -9,6 +9,7 @@ using Teamify.Models.Sport;
 
 namespace Teamify.Controllers
 {
+    [Authorize]
     public class SportRequestController : BaseController
     {
         // GET: SportRequest
@@ -44,5 +45,38 @@ namespace Teamify.Controllers
             }
             return View("AddSportRequestView", model);
         }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult AcceptNewSportsList()
+        {
+            var model = Db.AddSportRequests.Select(x => new AddSportRequestModel
+            {
+                AddSportRequestId = x.AddSportRequestId,
+                SportName = x.SportName,
+                SportDescription = x.SportDescription,
+                SportRules = x.SportRules,
+                CreatedById = x.CreatedBy.UserName,
+                CreatedOn = x.CreatedOn,
+                Status = x.RequestStatus
+            }).Where(z => z.Status == AddSportRequestStatus.Pending).ToList();
+
+            return View("AcceptNewSportsListView", model);
+        }
+
+        //[Authorize(Roles = "Administrator")]
+        //public ActionResult SportRequestDetails(int id)
+        //{
+        //    var modelDefault = Db.AddSportRequests.FirstOrDefault(x => x.AddSportRequestId == id);
+        //    var model = new AddSportRequestModel
+        //    {
+        //        AddSportRequestId = modelDefault.AddSportRequestId,
+        //        SportName = modelDefault.SportName,
+        //        SportDescription = modelDefault.SportDescription,
+        //        SportRules = modelDefault.SportRules
+        //    };
+
+        //    return View("SportRequestDetailsView", model);
+
+        //}
     }
 }
