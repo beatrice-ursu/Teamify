@@ -5,16 +5,15 @@
     <input class="form-control" type="text" placeholder="Search sport">
 </li>
 
-    @foreach (var item in Model)
-    {
-        <li class="nav-item">
-            <a class="nav-link" href="@Url.Action("SportDetailsView", "Sport", new {id = item.SportId})">@item.Name</a>
-        </li>
-    }
-    @if (Request.IsAuthenticated)
-    {
-        <li class="nav-item">
-            <a href="@Url.Action("AddSportView", "SportRequest")" id="btnAddNewSport" class="btn btn-outline-success btn-sm w-100">Request new sport</a>
-        </li>
-    }
-</ul>
+@foreach (var item in Model)
+{
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("SportDetailsView", "Sport", new {id = item.SportId})">@item.Name</a>
+    </li>
+}
+@if (Request.IsAuthenticated)
+{
+    <li class="nav-item">
+        <a href="@Url.Action("AddSportView", "SportRequest")" id="btnAddNewSport" class="btn btn-outline-success btn-sm w-100">Request new sport</a>
+    </li>
+}

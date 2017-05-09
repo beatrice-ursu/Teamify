@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using FluentValidation.Attributes;
 using Teamify.DL.Entities;
-using Teamify.Validators;
 
 namespace Teamify.Models.Sport
 {
-    [Validator(typeof(AddSportRequestValidator))]
     public class AddSportRequestModel
     {
         public int AddSportRequestId { get; set; }
 
+        [Required(ErrorMessage = "Name is required.")]
         [Display(Name = "Name")]
         public string SportName { get; set; }
 
+        [Required(ErrorMessage = "Description is requried.")]
         [Display(Name = "Description")]
         public string SportDescription { get; set; }
 
+        [Required(ErrorMessage = "Rules are required.")]
         [Display(Name = "Rules")]
         public string SportRules { get; set; }
 

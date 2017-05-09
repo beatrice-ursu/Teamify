@@ -2,38 +2,92 @@
 @{
     ViewBag.Title = "Register";
 }
-
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+<div class="row justify-content-center mt-5">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <strong>Create a new account</strong>
+            </div>
+            <div class="card-block">
+                <div class="row">
+                    <div class="col">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#account" role="tab" aria-controls="account">Account</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">Profile</a>
+                            </li>
+                        </ul>
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", @id="register-form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="account" role="tabpanel">
+                                    <div class="form-group row">
+                                        @Html.LabelFor(m => m.Email, new { @class = "col-md-3 form-control-label" })
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                            <span class="help-block">Please enter your email.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        @Html.LabelFor(m => m.Password, new { @class = "col-md-3 form-control-label" })
+                                        <div class="col-md-9">
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                            <span class="help-block">Please enter a complex password.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-3 form-control-label" })
+                                        <div class="col-md-9">
+                                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                            <span class="help-block">Please econfirm the password.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="profile" role="tabpanel">
+                                    <div class="form-group row">
+                                        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-3 form-control-label" })
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        @Html.LabelFor(m => m.LastName, new {@class = "col-md-3 form-control-label"})
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(m => m.LastName, new {@class = "form-control"})
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        @Html.LabelFor(m => m.Bio, new {@class = "col-md-3 form-control-label"})
+                                        <div class="col-md-9">
+                                            @Html.TextAreaFor(m => m.Bio, new {@class = "form-control", @placeholder = "Say some words about yourself. Other people can see this information. Make it count! :)", @rows = "9"})
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="#" data-toggle="tab" id="submit-register-form-button" aria-controls="profile" class="btn btn-success btn-block">Submit</a>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
+</div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var $registerForm = $('#register-form');
+            var $submitRegisterFormButton = $('#submit-register-form-button');
+
+            $submitRegisterFormButton.click(function() {
+                $registerForm.submit();
+            });
+        });
+    </script>
 }

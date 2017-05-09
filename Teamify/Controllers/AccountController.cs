@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Teamify.DL;
 using Teamify.DL.Entities;
+using Teamify.Helpers;
 using Teamify.Models;
 using Teamify.Models.Account;
 
@@ -152,10 +153,24 @@ namespace Teamify.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    UserProfile = new UserProfile
+                    {
+                        LastName = model.LastName,
+                        FirstName = model.FirstName,
+                        Bio = model.Bio
+                    }
+                };
+                user.UserProfile.User = user;
+                user.UserProfile.AddAudit(user);
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
