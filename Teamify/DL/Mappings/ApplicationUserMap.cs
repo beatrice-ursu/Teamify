@@ -3,12 +3,12 @@ using Teamify.DL.Entities;
 
 namespace Teamify.DL.Mappings
 {
-    public class ApplicationUserMap : EntityTypeConfiguration<ApplicationUser>
+    public class ApplicationUserMap : EntityTypeConfiguration<User>
     {
         public ApplicationUserMap()
         {
             this.HasRequired(u => u.UserProfile)
-                .WithRequiredPrincipal(u => u.ApplicationUser);
+                .WithRequiredPrincipal(u => u.User);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Teamify.Controllers
             Db = new ApplicationDbContext();
         }
 
-        protected ApplicationUser CurrentUser
+        protected User CurrentUser
         {
             get
             {

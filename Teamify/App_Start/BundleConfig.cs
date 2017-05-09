@@ -8,27 +8,24 @@ namespace Teamify
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+            bundles.Add(new ScriptBundle("~/bundles/libs").Include(
+                        "~/Scripts/libs/jquery.js",
+                        "~/Scripts/libs/tether.js",
+                        "~/Scripts/libs/bootstrap.js",
+                        "~/Scripts/libs/tether.js",
+                        "~/Scripts/libs/respond.js",
+                        "~/Scripts/libs/Chart.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
-
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/tether.js",
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                        "~/Scripts/libs/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/bootstrap-grid.css",
-                      "~/Content/bootstrap-reboot.css",
-                      "~/Content/site.css"));
+                      "~/Content/font-awesome.css",
+                      "~/Content/simple-line-icons.css",
+                      "~/Content/coreui.css",
+                      "~/Content/Site.css"));
         }
     }
 }
