@@ -21,11 +21,11 @@ namespace Teamify.Models.Account
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Required(ErrorMessage = "Last Name is required")]
+        [Required(ErrorMessage = "Last Name is required.")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "First Name is required")]
+        [Required(ErrorMessage = "First Name is required.")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 

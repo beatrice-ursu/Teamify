@@ -3,7 +3,7 @@
     ViewBag.Title = "Register";
 }
 <div class="row justify-content-center mt-5">
-    <div class="col-8">
+    <div class="col-6">
         <div class="card">
             <div class="card-header">
                 <strong>Create a new account</strong>
@@ -13,10 +13,10 @@
                     <div class="col">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#account" role="tab" aria-controls="account">Account</a>
+                                <a class="nav-link active" id="account-tab" data-toggle="tab" href="#account" role="tab" aria-controls="account">Account</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">Profile</a>
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">Profile</a>
                             </li>
                         </ul>
                         @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", @id="register-form" }))
@@ -24,40 +24,42 @@
                             @Html.AntiForgeryToken()
                             @Html.ValidationSummary("", new { @class = "text-danger" })
                             <div class="tab-content">
-                                <div class="tab-pane active" id="account" role="tabpanel">
+                                <div class="tab-pane fade show active" id="account" role="tabpanel">
                                     <div class="form-group row">
                                         @Html.LabelFor(m => m.Email, new { @class = "col-md-3 form-control-label" })
                                         <div class="col-md-9">
                                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                                            <span class="help-block">Please enter your email.</span>
+                                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         @Html.LabelFor(m => m.Password, new { @class = "col-md-3 form-control-label" })
                                         <div class="col-md-9">
                                             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                            <span class="help-block">Please enter a complex password.</span>
+                                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-3 form-control-label" })
                                         <div class="col-md-9">
                                             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                                            <span class="help-block">Please econfirm the password.</span>
+                                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="profile" role="tabpanel">
+                                <div class="tab-pane fade" id="profile" role="tabpanel">
                                     <div class="form-group row">
                                         @Html.LabelFor(m => m.FirstName, new { @class = "col-md-3 form-control-label" })
                                         <div class="col-md-9">
                                             @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         @Html.LabelFor(m => m.LastName, new {@class = "col-md-3 form-control-label"})
                                         <div class="col-md-9">
                                             @Html.TextBoxFor(m => m.LastName, new {@class = "form-control"})
+                                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -71,9 +73,20 @@
                         }
                     </div>
                 </div>
-            </div>
-            <div class="card-footer">
-                <a href="#" data-toggle="tab" id="submit-register-form-button" aria-controls="profile" class="btn btn-success btn-block">Submit</a>
+                
+                <div id="first-step" class="row">
+                    <div class="col">
+                        <a href="#" id="next-register-form-button" class="btn btn-success btn-block">Next</a>
+                    </div>
+                </div>
+                <div id="second-step" class="row hidden">
+                    <div class="col mb-1">
+                        <a href="#" id="back-register-form-button" class="btn btn-secondary btn-block">Cancel</a>
+                    </div>
+                    <div class="col">
+                        <a href="#" id="submit-register-form-button" class="btn btn-success btn-block">Submit</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -83,9 +96,44 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var $registerForm = $('#register-form');
-            var $submitRegisterFormButton = $('#submit-register-form-button');
+            var $firstStep = $('#first-step');
+            var $secondStep = $('#second-step');
 
-            $submitRegisterFormButton.click(function() {
+            var $tabs = {
+                account: $('#account-tab'),
+                profile: $('#profile-tab')
+            };
+
+            var $buttons = {
+                nextRegisterFormButton: $('#next-register-form-button'),
+                backRegisterFormButton: $('#back-register-form-button'),
+                submitRegisterFormButton: $('#submit-register-form-button')
+            };
+
+            $buttons.nextRegisterFormButton.click(function() {
+                hideFirstStep();
+                $tabs.profile.tab('show');
+            });
+
+            $buttons.backRegisterFormButton.click(function() {
+                hideSecondStep();
+                $tabs.account.tab('show');
+            });
+
+            $tabs.account.on('shown.bs.tab', hideSecondStep);
+            $tabs.profile.on('shown.bs.tab', hideFirstStep);
+
+            function hideSecondStep(e) {
+                $secondStep.hide();
+                $firstStep.fadeIn(500);
+            }
+
+            function hideFirstStep() {
+                $firstStep.hide();
+                $secondStep.fadeIn(500);
+            }
+
+            $buttons.submitRegisterFormButton.click(function() {
                 $registerForm.submit();
             });
         });
