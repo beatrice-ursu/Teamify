@@ -268,6 +268,7 @@
   <ItemGroup>
     <Content Include="Content\coreui.css" />
     <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\select2.min.css" />
     <Content Include="Content\simple-line-icons.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
@@ -542,6 +543,7 @@
     <Content Include="Scripts\libs\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\libs\respond.min.js" />
     <Content Include="Scripts\libs\tether.js" />
+    <Content Include="Scripts\libs\select2.full.min.js" />
     <Content Include="Scripts\views\charts.js" />
     <Content Include="Scripts\views\main.js" />
     <Content Include="Scripts\views\widgets.js" />

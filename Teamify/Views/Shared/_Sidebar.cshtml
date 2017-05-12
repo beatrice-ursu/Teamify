@@ -9,6 +9,7 @@
                 Sports
             </li>
             @Html.Action("GetSportsList", "Layout")
+            @*@Html.Partial("_ProfilePartial")*@
             @*<li class="nav-item nav-dropdown">
                     <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> Components</a>
                     <ul class="nav-dropdown-items">
@@ -56,13 +57,13 @@
                     <a class="nav-link" href="charts.html"><i class="icon-pie-chart"></i> Charts</a>
                 </li>*@
 
-            <li class="divider"></li>
+            @*<li class="divider"></li>
             <li class="nav-title">
                 Extras
             </li>
             <li class="nav-item">
                 <a id="btnAddNewSport" class="nav-link" href="@Url.Action("AddSportView", "SportRequest")">Request new sport</a>
-            </li>
+            </li>*@
         </ul>
     </nav>
 </div>
