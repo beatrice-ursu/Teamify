@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using Teamify.DL;
 using Teamify.DL.Entities;
 using Teamify.Models;
@@ -21,7 +23,17 @@ namespace Teamify
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            var apiKey = "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";
+            var client = new SendGridClient(apiKey);
+            var msg = new SendGridMessage
+            {
+                From = new EmailAddress("office@teamify.com", "Teamify Team"),
+                Subject = "Hello and welcome to Teamify! Please confirm to complete the registration!",
+                HtmlContent = message.Body,
+                PlainTextContent = message.Body
+            };
+            msg.AddTo(new EmailAddress(message.Destination));
+            return client.SendEmailAsync(msg);
         }
     }
 
@@ -66,25 +78,23 @@ namespace Teamify
             manager.UserLockoutEnabledByDefault = true;
             manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
             manager.MaxFailedAccessAttemptsBeforeLockout = 5;
-
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
-            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<User>
-            {
-                MessageFormat = "Your security code is {0}"
-            });
-            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<User>
-            {
-                Subject = "Security Code",
-                BodyFormat = "Your security code is {0}"
-            });
+            //manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<User>
+            //{
+            //    MessageFormat = "Your security code is {0}"
+            //});
+            //manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<User>
+            //{
+            //    Subject = "Security Code",
+            //    BodyFormat = "Your security code is {0}"
+            //});
             manager.EmailService = new EmailService();
-            manager.SmsService = new SmsService();
+            //manager.SmsService = new SmsService();
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = 
-                    new DataProtectorTokenProvider<User>(dataProtectionProvider.Create("ASP.NET Identity"));
+                manager.UserTokenProvider = new DataProtectorTokenProvider<User>(dataProtectionProvider.Create("Teamify Identity"));
             }
             return manager;
         }
