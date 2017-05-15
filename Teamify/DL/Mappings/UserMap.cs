@@ -3,9 +3,9 @@ using Teamify.DL.Entities;
 
 namespace Teamify.DL.Mappings
 {
-    public class ApplicationUserMap : EntityTypeConfiguration<User>
+    public class UserMap : EntityTypeConfiguration<User>
     {
-        public ApplicationUserMap()
+        public UserMap()
         {
             this.HasRequired(u => u.UserProfile)
                 .WithRequiredPrincipal(u => u.User);

@@ -207,11 +207,14 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SportRequestController.cs" />
+    <Compile Include="DL\Entities\Activity.cs" />
     <Compile Include="DL\Entities\AddSportRequest.cs" />
+    <Compile Include="DL\Entities\Comment.cs" />
     <Compile Include="DL\Entities\Entity.cs" />
     <Compile Include="DL\Entities\Sport.cs" />
     <Compile Include="DL\Entities\UserProfile.cs" />
-    <Compile Include="DL\Mappings\ApplicationUserMap.cs" />
+    <Compile Include="DL\Mappings\ActivityMap.cs" />
+    <Compile Include="DL\Mappings\UserMap.cs" />
     <Compile Include="Controllers\SportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -229,6 +232,10 @@
     <Compile Include="Migrations\201705082006585_Update.cs" />
     <Compile Include="Migrations\201705082006585_Update.Designer.cs">
       <DependentUpon>201705082006585_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705151913550_DefineActivity.cs" />
+    <Compile Include="Migrations\201705151913550_DefineActivity.Designer.cs">
+      <DependentUpon>201705151913550_DefineActivity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DL\ApplicationDbContext.cs" />
@@ -599,6 +606,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705082006585_Update.resx">
       <DependentUpon>201705082006585_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705151913550_DefineActivity.resx">
+      <DependentUpon>201705151913550_DefineActivity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

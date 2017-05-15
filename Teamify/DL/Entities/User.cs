@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -10,6 +11,8 @@ namespace Teamify.DL.Entities
     {
         public virtual UserProfile UserProfile { get; set; }
 
+        public virtual ICollection<Activity> CreatedActivities { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -17,5 +20,6 @@ namespace Teamify.DL.Entities
             // Add custom user claims here
             return userIdentity;
         }
+
     }
 }

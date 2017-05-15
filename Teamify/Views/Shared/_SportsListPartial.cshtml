@@ -1,13 +1,6 @@
 ﻿@model IEnumerable<Teamify.Models.Sport.SportModel>
 
 <li class="divider"></li>
-<li class="nav-item">
-    <select name="SearchSport" id="SearchSport" class="js-example-basic-single form-control"></select>
-    @*<select class="js-example-basic-single">
-        <option value="AL">Alabama</option>
-        <option value="WY">Wyoming</option>
-    </select>*@
-</li>
 
 @foreach (var item in Model)
 {
@@ -15,14 +8,3 @@
         <a class="nav-link" href="@Url.Action("SportDetailsView", "Sport", new {id = item.SportId})">@item.Name</a>
     </li>
 }
-
-<script>
-    //$.get('/Layout/GetSportsList',
-    //    function (data) {
-    //        $("#SearchSport")
-    //            .select2({
-    //                data: data
-    //            });
-    //    });
-
-</script>
