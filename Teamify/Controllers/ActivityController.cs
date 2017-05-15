@@ -11,7 +11,13 @@ namespace Teamify.Controllers
     {
         public ActionResult CreateActivity()
         {
-            return View("CreateActivity", new ActivityModel());
+            var model = new ActivityModel
+            {
+                Date = DateTime.Now,
+                ExpireDate = DateTime.Now
+            };
+
+            return View("CreateActivity", model );
         }
     }
 }
