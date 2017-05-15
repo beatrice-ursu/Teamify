@@ -22,7 +22,7 @@
         @if (Request.IsAuthenticated)
         {
             <li>
-                <button class="btn btn-success" href="#"> Create activity</button>
+                <a class="btn btn-success" href="@Url.Action("CreateActivity", "Activity")"> Create activity</a>
             </li>
             <li class="nav-item d-md-down-none">
                 <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
@@ -59,12 +59,12 @@
 
                     @if (User.IsInRole("Administrator"))
                     {
-                        <a class="dropdown-item" href="@Url.Action("AcceptNewSportsList", "SportRequest")"><i class="fa fa-plus"></i> Accept new sports</a>
+                        <a class="dropdown-item" href="@Url.Action("SportsRequestsList", "SportRequest")"><i class="fa fa-plus"></i> Accept new sports</a>
                         @*<a class="dropdown-item" href="@Url.Action("AddSportView", "SportRequest")"><i class="fa fa-plus"></i> Request new sport</a>*@
-                    }
-                    else
-                    {
-                        <a class="dropdown-item" href="@Url.Action("AddSportView", "SportRequest")"><i class="fa fa-plus"></i> Request new sport</a>
+                        //}
+                        //else
+                        //{
+                        <a class="dropdown-item" href="@Url.Action("CreateSportRequest", "SportRequest")"><i class="fa fa-plus"></i> Request new sport</a>
                     }
                     <div class="divider"></div>
                     @*<a class="dropdown-item" href="#"><i class="fa fa-shield"></i> Lock Account</a>*@

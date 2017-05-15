@@ -13,9 +13,13 @@ namespace Teamify.Controllers
     [Authorize]
     public class SportController : BaseController
     {
-        public ActionResult CreateNewSportView(int id)
+        public ActionResult CreateSport(int id)
         {
             var requestModel = Db.AddSportRequests.FirstOrDefault(x => x.AddSportRequestId == id);
+
+            if (requestModel == null)
+                return HttpNotFound();
+
             var createModel = new CreateSportModel
             {
                 AddSportRequestId = id,
@@ -23,9 +27,10 @@ namespace Teamify.Controllers
                 RequestSportDescription = requestModel.SportDescription,
                 RequestSportRules = requestModel.SportRules
             };
-            return View("CreateNewSportView", createModel);
+            return View("CreateSport", createModel);
         }
 
+        [HttpPost]
         public ActionResult CreateSport(CreateSportModel model)
         {
             if (ModelState.IsValid)
@@ -42,23 +47,31 @@ namespace Teamify.Controllers
                     Db.Sports.Add(createSport);
 
                     var updateSport = Db.AddSportRequests.FirstOrDefault(x => x.AddSportRequestId == model.AddSportRequestId);
-                    updateSport.RequestStatus = AddSportRequestStatus.Accepted;
-                    Db.AddSportRequests.AddOrUpdate(updateSport);
+                    if (updateSport != null)
+                    {
+                        updateSport.RequestStatus = AddSportRequestStatus.Accepted;
+                        Db.AddSportRequests.AddOrUpdate(updateSport);
+                    }
+
                     Db.SaveChanges();
                 }
                 catch (Exception e)
                 {
                     ModelState.AddModelError("", "Something went wrong. Please try again");
-                    return RedirectToAction("CreateNewSportView", model.AddSportRequestId);
+                    return RedirectToAction("CreateSport", model.AddSportRequestId);
                 }
                 return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("CreateNewSportView", model.AddSportRequestId);
+            return RedirectToAction("CreateSport", model.AddSportRequestId);
         }
 
-        public ActionResult SportDetailsView(int id)
+        public ActionResult SportDetails(int id)
         {
             var dbmodel = Db.Sports.FirstOrDefault(x => x.SportId == id);
+
+            if (dbmodel == null)
+                return HttpNotFound();
+
             var model = new SportModel
             {
                 Name = dbmodel.Name,
@@ -66,7 +79,19 @@ namespace Teamify.Controllers
                 Rules = dbmodel.Rules
             };
 
-            return View("SportDetailsView", model);
+            return View("SportDetails", model);
+        }
+
+        public ActionResult SportsList()
+        {
+            var model = Db.Sports.Select(x => new SportModel
+            {
+                Name = x.Name,
+                SportId = x.SportId
+
+            }).ToList();
+
+            return PartialView("_SportsListPartial", model);
         }
     }
 }

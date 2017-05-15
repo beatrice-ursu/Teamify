@@ -20,11 +20,11 @@ namespace Teamify.Models.Sport
         public string NewSportName { get; set; }
 
         [Required(ErrorMessage = "Description is requried.")]
-        [Display(Name = "New sport description")]
+        [Display(Name = "Description")]
         public string NewSportDescription { get; set; }
 
         [Required(ErrorMessage = "Rules are required.")]
-        [Display(Name = "New sport rules")]
+        [Display(Name = "Rules")]
         public string NewSportRules { get; set; }
     }
 }

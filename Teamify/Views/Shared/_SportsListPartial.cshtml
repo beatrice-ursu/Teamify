@@ -5,6 +5,6 @@
 @foreach (var item in Model)
 {
     <li class="nav-item">
-        <a class="nav-link" href="@Url.Action("SportDetailsView", "Sport", new {id = item.SportId})">@item.Name</a>
+        <a class="nav-link" href="@Url.Action("SportDetails", "Sport", new {id = item.SportId})">@item.Name</a>
     </li>
 }
