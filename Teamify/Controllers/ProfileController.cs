@@ -19,10 +19,10 @@ namespace Teamify.Controllers
         }
 
         [HttpGet]
-        [Route("Details/{profileId}")]
-        public ActionResult Details(int profileId)
+        [Route("Details")]
+        public ActionResult Details()
         {
-            var profileEnt = Db.UserProfiles.FirstOrDefault(x => x.UserProfileId == profileId);
+            var profileEnt = CurrentUser.UserProfile;
             if (profileEnt != null)
             {
                 var model = new UserProfileModel
@@ -38,11 +38,21 @@ namespace Teamify.Controllers
             return HttpNotFound();
         }
 
+        [HttpPost]
         public ActionResult Details(UserProfileModel model)
         {
             if (ModelState.IsValid)
             {
-                
+                var profileEnt = Db.UserProfiles.FirstOrDefault(x => x.UserProfileId == model.UserProfileId);
+                if (profileEnt == null) return HttpNotFound();
+
+                profileEnt.FirstName = model.FirstName;
+                profileEnt.LastName = model.LastName;
+                profileEnt.Bio = model.Bio;
+
+                Db.SaveChanges();
+
+                return RedirectToAction("Details");
             }
             return View(model);
         }
