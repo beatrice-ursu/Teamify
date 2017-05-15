@@ -13,7 +13,7 @@ namespace Teamify.Controllers
     [Authorize]
     public class SportController : BaseController
     {
-        public ActionResult CreateNewSportView(int id)
+        public ActionResult CreateSport(int id)
         {
             var requestModel = Db.AddSportRequests.FirstOrDefault(x => x.AddSportRequestId == id);
             var createModel = new CreateSportModel
@@ -23,7 +23,7 @@ namespace Teamify.Controllers
                 RequestSportDescription = requestModel.SportDescription,
                 RequestSportRules = requestModel.SportRules
             };
-            return View("CreateNewSportView", createModel);
+            return View("CreateSport", createModel);
         }
 
         public ActionResult CreateSport(CreateSportModel model)
@@ -53,10 +53,10 @@ namespace Teamify.Controllers
                 }
                 return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("CreateNewSportView", model.AddSportRequestId);
+            return RedirectToAction("CreateSport", model.AddSportRequestId);
         }
 
-        public ActionResult SportDetailsView(int id)
+        public ActionResult SportDetails(int id)
         {
             var dbmodel = Db.Sports.FirstOrDefault(x => x.SportId == id);
             var model = new SportModel
@@ -66,7 +66,19 @@ namespace Teamify.Controllers
                 Rules = dbmodel.Rules
             };
 
-            return View("SportDetailsView", model);
+            return View("SportDetails", model);
+        }
+
+        public ActionResult SportsList()
+        {
+            var model = Db.Sports.Select(x => new SportModel
+            {
+                Name = x.Name,
+                SportId = x.SportId
+
+            }).ToList();
+
+            return PartialView("_SportsListPartial", model);
         }
     }
 }
