@@ -4,14 +4,41 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Teamify.Models.Sport;
 
 namespace Teamify.ApiControllers
 {
-    public class ValuesController : ApiController
+    [RoutePrefix("api/Values")]
+    public class ValuesController : BaseApiController
     {
-        public IHttpActionResult GetValues()
+        [Route("GetValues/{someId}")]
+        [HttpGet]
+        public IHttpActionResult GetValues(int someId)
         {
-            return Ok(1);
+            if (someId == 0) return BadRequest();
+            return Ok(someId);
+        }
+
+        [Route("PostValue/{someId}")]
+        [HttpPost]
+        public IHttpActionResult PostValues([FromUri]int someId, [FromBody]object someObj)
+        {
+            return Ok(someObj);
+        }
+
+        [Route("GetSports")]
+        [HttpGet]
+        public IHttpActionResult GetSports()
+        {
+            var sports = Db.Sports.Select(x => new SportModel
+            {
+                Name = x.Name,
+                Description = x.Description,
+                Rules = x.Rules,
+                SportId = x.SportId
+            }).ToList();
+
+            return Ok(sports);
         }
     }
 }
