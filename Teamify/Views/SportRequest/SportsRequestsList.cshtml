@@ -14,7 +14,7 @@
                 <div class="card-block">
                     <h4 class="card-title">@item.SportDescription</h4>
                     <p class="card-text">@item.SportRules</p>
-                    <a href="@Url.Action("CreateNewSportView", "Sport", new {id = item.AddSportRequestId})" class="btn btn-primary">Create game</a>
+                    <a href="@Url.Action("CreateSport", "Sport", new {id = item.AddSportRequestId})" class="btn btn-primary">Create game</a>
                 </div>
             </div>
         </div>

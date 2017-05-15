@@ -16,6 +16,10 @@ namespace Teamify.Controllers
         public ActionResult CreateSport(int id)
         {
             var requestModel = Db.AddSportRequests.FirstOrDefault(x => x.AddSportRequestId == id);
+
+            if (requestModel == null)
+                return HttpNotFound();
+
             var createModel = new CreateSportModel
             {
                 AddSportRequestId = id,
@@ -26,6 +30,7 @@ namespace Teamify.Controllers
             return View("CreateSport", createModel);
         }
 
+        [HttpPost]
         public ActionResult CreateSport(CreateSportModel model)
         {
             if (ModelState.IsValid)
@@ -42,14 +47,18 @@ namespace Teamify.Controllers
                     Db.Sports.Add(createSport);
 
                     var updateSport = Db.AddSportRequests.FirstOrDefault(x => x.AddSportRequestId == model.AddSportRequestId);
-                    updateSport.RequestStatus = AddSportRequestStatus.Accepted;
-                    Db.AddSportRequests.AddOrUpdate(updateSport);
+                    if (updateSport != null)
+                    {
+                        updateSport.RequestStatus = AddSportRequestStatus.Accepted;
+                        Db.AddSportRequests.AddOrUpdate(updateSport);
+                    }
+
                     Db.SaveChanges();
                 }
                 catch (Exception e)
                 {
                     ModelState.AddModelError("", "Something went wrong. Please try again");
-                    return RedirectToAction("CreateNewSportView", model.AddSportRequestId);
+                    return RedirectToAction("CreateSport", model.AddSportRequestId);
                 }
                 return RedirectToAction("Index", "Home");
             }
@@ -59,6 +68,10 @@ namespace Teamify.Controllers
         public ActionResult SportDetails(int id)
         {
             var dbmodel = Db.Sports.FirstOrDefault(x => x.SportId == id);
+
+            if (dbmodel == null)
+                return HttpNotFound();
+
             var model = new SportModel
             {
                 Name = dbmodel.Name,

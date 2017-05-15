@@ -589,10 +589,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_SportsListPartial.cshtml" />
-    <Content Include="Views\SportRequest\AddSportRequest.cshtml" />
+    <Content Include="Views\SportRequest\CreateSportRequest.cshtml" />
     <Content Include="Views\Profile\Details.cshtml" />
     <Content Include="Views\Shared\_ProfilePartial.cshtml" />
-    <Content Include="Views\SportRequest\AcceptSportsList.cshtml" />
+    <Content Include="Views\SportRequest\SportsRequestsList.cshtml" />
     <Content Include="Views\Sport\CreateSport.cshtml" />
     <Content Include="Views\Sport\SportDetails.cshtml" />
   </ItemGroup>

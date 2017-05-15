@@ -59,12 +59,12 @@
 
                     @if (User.IsInRole("Administrator"))
                     {
-                        <a class="dropdown-item" href="@Url.Action("AcceptNewSportsList", "SportRequest")"><i class="fa fa-plus"></i> Accept new sports</a>
+                        <a class="dropdown-item" href="@Url.Action("SportsRequestsList", "SportRequest")"><i class="fa fa-plus"></i> Accept new sports</a>
                         @*<a class="dropdown-item" href="@Url.Action("AddSportView", "SportRequest")"><i class="fa fa-plus"></i> Request new sport</a>*@
                     }
                     else
                     {
-                        <a class="dropdown-item" href="@Url.Action("AddSportView", "SportRequest")"><i class="fa fa-plus"></i> Request new sport</a>
+                        <a class="dropdown-item" href="@Url.Action("CreateSportRequest", "SportRequest")"><i class="fa fa-plus"></i> Request new sport</a>
                     }
                     <div class="divider"></div>
                     <a class="dropdown-item" href="#"><i class="fa fa-shield"></i> Lock Account</a>
