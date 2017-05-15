@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Teamify.DL.Entities
 {
@@ -11,5 +12,6 @@ namespace Teamify.DL.Entities
         [Required]
         public string Description { get; set; }
         public string Rules { get; set; }
+        public virtual ICollection<UserProfile> UsersFavorite { get; set; }
     }
 }

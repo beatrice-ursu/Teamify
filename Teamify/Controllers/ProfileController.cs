@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Teamify.Models.Profile;
 
 namespace Teamify.Controllers
 {
@@ -22,8 +23,28 @@ namespace Teamify.Controllers
         public ActionResult Details(int profileId)
         {
             var profileEnt = Db.UserProfiles.FirstOrDefault(x => x.UserProfileId == profileId);
+            if (profileEnt != null)
+            {
+                var model = new UserProfileModel
+                {
+                    FirstName = profileEnt.FirstName,
+                    Bio = profileEnt.Bio,
+                    LastName = profileEnt.LastName,
+                    UserProfileId = profileEnt.UserProfileId,
+                    Rating = profileEnt.Rating
+                };
+             return View(model);
+            }
+            return HttpNotFound();
+        }
 
-            return View();
+        public ActionResult Details(UserProfileModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                
+            }
+            return View(model);
         }
     }
 }

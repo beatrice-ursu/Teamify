@@ -193,6 +193,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\BaseApiController.cs" />
     <Compile Include="ApiControllers\ValuesController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -237,6 +238,10 @@
     <Compile Include="Migrations\201705151913550_DefineActivity.cs" />
     <Compile Include="Migrations\201705151913550_DefineActivity.Designer.cs">
       <DependentUpon>201705151913550_DefineActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705151930430_User Favorite sports.cs" />
+    <Compile Include="Migrations\201705151930430_User Favorite sports.Designer.cs">
+      <DependentUpon>201705151930430_User Favorite sports.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DL\ApplicationDbContext.cs" />
@@ -611,6 +616,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705151913550_DefineActivity.resx">
       <DependentUpon>201705151913550_DefineActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705151930430_User Favorite sports.resx">
+      <DependentUpon>201705151930430_User Favorite sports.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
