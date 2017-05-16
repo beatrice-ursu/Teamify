@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Teamify.DL.Entities
 {
@@ -8,11 +9,18 @@ namespace Teamify.DL.Entities
     {
         [Required]
         public DateTime CreatedOn { get; set; }
+
         [Required]
-        public User CreatedBy { get; set; }
+        public string CreatedById { get; set; }
+        [ForeignKey("CreatedById")]
+        public virtual User CreatedBy { get; set; }
+
         [Required]
         public DateTime UpdatedOn { get; set; }
+
         [Required]
-        public User UpdatedBy { get; set; }
+        public string UpdatedById { get; set; }
+        [ForeignKey("UpdatedById")]
+        public virtual User UpdatedBy { get; set; }
     }
 }

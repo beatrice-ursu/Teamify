@@ -243,6 +243,10 @@
     <Compile Include="Migrations\201705151930430_User Favorite sports.Designer.cs">
       <DependentUpon>201705151930430_User Favorite sports.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705152117217_FixBaseEntity.cs" />
+    <Compile Include="Migrations\201705152117217_FixBaseEntity.Designer.cs">
+      <DependentUpon>201705152117217_FixBaseEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DL\ApplicationDbContext.cs" />
     <Compile Include="DL\Entities\User.cs" />
@@ -619,6 +623,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705151930430_User Favorite sports.resx">
       <DependentUpon>201705151930430_User Favorite sports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705152117217_FixBaseEntity.resx">
+      <DependentUpon>201705152117217_FixBaseEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
