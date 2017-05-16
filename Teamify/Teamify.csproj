@@ -199,6 +199,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\ActivityController.cs" />
     <Compile Include="ApiControllers\BaseApiController.cs" />
     <Compile Include="ApiControllers\ValuesController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -282,8 +283,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-material-datetimepicker.css" />
     <Content Include="Content\coreui.css" />
     <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\fonts\Material-Design-Icons.svg" />
     <Content Include="Content\select2.min.css" />
     <Content Include="Content\simple-line-icons.css" />
     <Content Include="favicon.ico" />
@@ -548,11 +551,14 @@
     <Content Include="Content\img\flags\Zimbabwe.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\createActivityModal.js" />
     <Content Include="Scripts\layout.js" />
+    <Content Include="Scripts\libs\bootstrap-material-datetimepicker.js" />
     <Content Include="Scripts\libs\bootstrap.js" />
     <Content Include="Scripts\libs\Chart.js" />
     <Content Include="Scripts\libs\jquery.js" />
     <Content Include="Scripts\libs\modernizr-2.8.3.js" />
+    <Content Include="Scripts\libs\moment.js" />
     <Content Include="Scripts\libs\pace.js" />
     <Content Include="Scripts\libs\respond.js" />
     <Content Include="Scripts\libs\respond.matchmedia.addListener.js" />
@@ -601,7 +607,6 @@
     <Content Include="Views\Shared\_SportsListPartial.cshtml" />
     <Content Include="Views\SportRequest\CreateSportRequest.cshtml" />
     <Content Include="Views\Profile\Details.cshtml" />
-    <Content Include="Views\Shared\_ProfilePartial.cshtml" />
     <Content Include="Views\SportRequest\SportsRequestsList.cshtml" />
     <Content Include="Views\Sport\CreateSport.cshtml" />
     <Content Include="Views\Sport\SportDetails.cshtml" />
@@ -663,7 +668,13 @@
     <Content Include="Views\Shared\_Header.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Activity\CreateActivity.cshtml" />
+    <Content Include="Views\Activity\_CreateActivityModal.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\Material-Design-Icons.eot" />
+    <Content Include="Content\fonts\Material-Design-Icons.ttf" />
+    <Content Include="Content\fonts\Material-Design-Icons.woff" />
+    <Content Include="Content\fonts\Material-Design-Icons.woff2" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

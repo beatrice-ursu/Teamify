@@ -7,17 +7,18 @@ using Teamify.Models;
 
 namespace Teamify.Controllers
 {
-    public class ActivityController : Controller
+    [Authorize]
+    public class ActivityController : BaseController
     {
-        public ActionResult CreateActivity()
-        {
-            var model = new ActivityModel
-            {
-                Date = DateTime.Now,
-                ExpireDate = DateTime.Now
-            };
+        //public ActionResult CreateActivity()
+        //{
+        //    var model = new ActivityModel
+        //    {
+        //        Date = DateTime.Now,
+        //        ExpireDate = DateTime.Now
+        //    };
 
-            return View("CreateActivity", model );
-        }
+        //    return PartialView("_CreateActivityModal", model);
+        //}
     }
 }
