@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using Teamify.Models;
+using Teamify.Models.Activity;
 
 namespace Teamify.ApiControllers
 {

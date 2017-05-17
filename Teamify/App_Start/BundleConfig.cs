@@ -17,7 +17,7 @@ namespace Teamify
                         "~/Scripts/libs/Chart.js",
                         "~/Scripts/libs/jquery.dataTables.js",
                         "~/Scripts/libs/dataTables.bootstrap.js",
-                        "~/Scripts/libs/select2.full.js"));
+                        "~/Scripts/libs/select2.full.js",
                         "~/Scripts/libs/moment.js",
                         "~/Scripts/libs/bootstrap-material-datetimepicker.js"));
 

@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using Teamify.Models.Profile;
-using Teamify.Models.Sport;
 
-namespace Teamify.Models
+namespace Teamify.Models.Activity
 {
     public class ActivityModel
     {
