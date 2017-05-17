@@ -1,0 +1,53 @@
+﻿@model Teamify.Models.Sport.AddSportRequestModel
+
+@{
+    ViewBag.Title = "Request new sport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center mt-3">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <strong>Request new sport</strong>
+            </div>
+            <div class="card-block">
+                <div class="row">
+                    <div class="col">
+                        @using (Html.BeginForm("Create", "SportRequest", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="tab-content">
+                                <div class="form-group row">
+                                    @Html.LabelFor(m => m.SportName, new { @class = "col-md-3 form-control-label" })
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(m => m.SportName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.SportName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    @Html.LabelFor(m => m.SportDescription, new { @class = "col-md-3 form-control-label" })
+                                    <div class="col-md-9">
+                                        @Html.TextAreaFor(model => model.SportDescription, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.SportDescription, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    @Html.LabelFor(m => m.SportRules, new { @class = "col-md-3 form-control-label" })
+                                    <div class="col-md-9">
+                                        @Html.TextAreaFor(model => model.SportRules, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.SportRules, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="mt-5">
+                                    <input type="submit" value="Request" class="btn btn-success btn-block" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

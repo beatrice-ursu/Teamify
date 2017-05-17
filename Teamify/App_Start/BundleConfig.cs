@@ -15,7 +15,9 @@ namespace Teamify
                         "~/Scripts/libs/tether.js",
                         "~/Scripts/libs/respond.js",
                         "~/Scripts/libs/Chart.js",
-                        "~/Scripts/libs/select2.full.min.js"));
+                        "~/Scripts/libs/jquery.dataTables.js",
+                        "~/Scripts/libs/dataTables.bootstrap.js",
+                        "~/Scripts/libs/select2.full.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
@@ -26,8 +28,10 @@ namespace Teamify
                       "~/Content/font-awesome.css",
                       "~/Content/simple-line-icons.css",
                       "~/Content/coreui.css",
-                      "~/Content/Site.css",
-                      "~/Content/select2.min.css"));
+                      "~/Content/jquery.dataTables.css",
+                      "~/Content/dataTables.bootstrap.css",
+                      "~/Content/select2.css",
+                      "~/Content/Site.css"));
         }
     }
 }

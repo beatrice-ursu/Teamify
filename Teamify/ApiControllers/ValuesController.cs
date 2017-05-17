@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using DataTables.AspNet.Core;
+using Teamify.Models.People;
 using Teamify.Models.Sport;
 
 namespace Teamify.ApiControllers
@@ -39,6 +41,21 @@ namespace Teamify.ApiControllers
             }).ToList();
 
             return Ok(sports);
+        }
+
+        [Route("GetPeople")]
+        [HttpGet]
+        public IHttpActionResult GetPeople(IDataTablesRequest objRequest)
+        {
+            var list = Db.UserProfiles.Select(x => new UserModel()
+            {
+                Name = x.LastName + x.FirstName,
+                Bio = x.Bio,
+                Rating = x.Rating
+
+            }).ToList();
+
+            return Ok(list);
         }
     }
 }
