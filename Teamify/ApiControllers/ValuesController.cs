@@ -43,19 +43,6 @@ namespace Teamify.ApiControllers
             return Ok(sports);
         }
 
-        [Route("GetPeople")]
-        [HttpGet]
-        public IHttpActionResult GetPeople(IDataTablesRequest objRequest)
-        {
-            var list = Db.UserProfiles.Select(x => new UserModel()
-            {
-                Name = x.LastName + x.FirstName,
-                Bio = x.Bio,
-                Rating = x.Rating
 
-            }).ToList();
-
-            return Ok(list);
-        }
     }
 }

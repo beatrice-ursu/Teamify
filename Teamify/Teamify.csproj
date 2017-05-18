@@ -201,6 +201,7 @@
   <ItemGroup>
     <Compile Include="ApiControllers\ActivityController.cs" />
     <Compile Include="ApiControllers\BaseApiController.cs" />
+    <Compile Include="ApiControllers\PeopleController.cs" />
     <Compile Include="ApiControllers\ValuesController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
