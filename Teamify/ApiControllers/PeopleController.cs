@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Http;
 using DataTables.AspNet.Core;
+using Teamify.DL;
 using Teamify.Models.People;
 
 namespace Teamify.ApiControllers
@@ -9,12 +9,16 @@ namespace Teamify.ApiControllers
     [RoutePrefix("api/People")]
     public class PeopleController : BaseApiController
     {
+        public PeopleController(ApplicationDbContext db) : base(db)
+        {
+        }
+
         // GET: People
-        [System.Web.Http.Route("GetPeople")]
-        [System.Web.Http.HttpGet]
+        [Route("GetPeople")]
+        [HttpGet]
         public IHttpActionResult GetPeople(IDataTablesRequest objRequest)
         {
-            var list = Db.UserProfiles.Select(x => new UserModel()
+            var list = DbContext.UserProfiles.Select(x => new UserModel()
             {
                 Name = x.LastName + x.FirstName,
                 Bio = x.Bio,
