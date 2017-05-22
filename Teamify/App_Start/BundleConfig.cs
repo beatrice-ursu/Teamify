@@ -15,7 +15,9 @@ namespace Teamify
                         "~/Scripts/libs/tether.js",
                         "~/Scripts/libs/respond.js",
                         "~/Scripts/libs/Chart.js",
-                        "~/Scripts/libs/select2.full.min.js",
+                        "~/Scripts/libs/jquery.dataTables.js",
+                        "~/Scripts/libs/dataTables.bootstrap.js",
+                        "~/Scripts/libs/select2.full.js",
                         "~/Scripts/libs/moment.js",
                         "~/Scripts/libs/bootstrap-material-datetimepicker.js"));
 
@@ -29,7 +31,9 @@ namespace Teamify
                       "~/Content/simple-line-icons.css",
                       "~/Content/coreui.css",
                       "~/Content/bootstrap-material-datetimepicker.css",
-                      "~/Content/select2.min.css",
+                      "~/Content/jquery.dataTables.css",
+                      "~/Content/dataTables.bootstrap.css",
+                      "~/Content/select2.css",
                       "~/Content/Site.css"));
         }
     }

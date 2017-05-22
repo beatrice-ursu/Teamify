@@ -215,6 +215,7 @@
   <ItemGroup>
     <Compile Include="ApiControllers\ActivityController.cs" />
     <Compile Include="ApiControllers\BaseApiController.cs" />
+    <Compile Include="ApiControllers\PeopleController.cs" />
     <Compile Include="ApiControllers\ValuesController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SportRequestController.cs" />
     <Compile Include="DL\Entities\Activity.cs" />
@@ -290,6 +292,7 @@
     <Compile Include="Models\Manage\ManageLoginsViewModel.cs" />
     <Compile Include="Models\Manage\SetPasswordViewModel.cs" />
     <Compile Include="Models\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="Models\People\UserModel.cs" />
     <Compile Include="Models\Profile\UserProfileModel.cs" />
     <Compile Include="Models\Sport\AddSportRequestModel.cs" />
     <Compile Include="Models\Sport\CreateSportModel.cs" />
@@ -300,9 +303,11 @@
   <ItemGroup>
     <Content Include="Content\bootstrap-material-datetimepicker.css" />
     <Content Include="Content\coreui.css" />
+    <Content Include="Content\dataTables.bootstrap.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\fonts\Material-Design-Icons.svg" />
-    <Content Include="Content\select2.min.css" />
+    <Content Include="Content\jquery.dataTables.css" />
+    <Content Include="Content\select2.css" />
     <Content Include="Content\simple-line-icons.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
@@ -571,6 +576,8 @@
     <Content Include="Scripts\libs\bootstrap-material-datetimepicker.js" />
     <Content Include="Scripts\libs\bootstrap.js" />
     <Content Include="Scripts\libs\Chart.js" />
+    <Content Include="Scripts\libs\dataTables.bootstrap.js" />
+    <Content Include="Scripts\libs\jquery.dataTables.js" />
     <Content Include="Scripts\libs\jquery.js" />
     <Content Include="Scripts\libs\modernizr-2.8.3.js" />
     <Content Include="Scripts\libs\moment.js" />
@@ -579,8 +586,8 @@
     <Content Include="Scripts\libs\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\libs\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\libs\respond.min.js" />
+    <Content Include="Scripts\libs\select2.full.js" />
     <Content Include="Scripts\libs\tether.js" />
-    <Content Include="Scripts\libs\select2.full.min.js" />
     <Content Include="Scripts\views\charts.js" />
     <Content Include="Scripts\views\main.js" />
     <Content Include="Scripts\views\widgets.js" />
@@ -620,11 +627,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_SportsListPartial.cshtml" />
-    <Content Include="Views\SportRequest\CreateSportRequest.cshtml" />
+    <Content Include="Views\SportRequest\Create.cshtml" />
     <Content Include="Views\Profile\Details.cshtml" />
-    <Content Include="Views\SportRequest\SportsRequestsList.cshtml" />
-    <Content Include="Views\Sport\CreateSport.cshtml" />
-    <Content Include="Views\Sport\SportDetails.cshtml" />
+    <Content Include="Views\SportRequest\List.cshtml" />
+    <Content Include="Views\Sport\Create.cshtml" />
+    <Content Include="Views\Sport\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -690,6 +697,9 @@
     <Content Include="Content\fonts\Material-Design-Icons.ttf" />
     <Content Include="Content\fonts\Material-Design-Icons.woff" />
     <Content Include="Content\fonts\Material-Design-Icons.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\People\List.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

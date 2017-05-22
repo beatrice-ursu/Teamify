@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Teamify.DL;
+using DataTables.AspNet.Core;
+using Teamify.Models.People;
 using Teamify.Models.Sport;
 
 namespace Teamify.ApiControllers

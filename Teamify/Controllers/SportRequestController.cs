@@ -18,13 +18,13 @@ namespace Teamify.Controllers
         }
 
         // GET: SportRequest
-        public ActionResult CreateSportRequest()
+        public ActionResult Create()
         {
-            return View("CreateSportRequest", new AddSportRequestModel());
+            return View("Create", new AddSportRequestModel());
         }
 
         [HttpPost]
-        public ActionResult CreateSportRequest(AddSportRequestModel model)
+        public ActionResult Create(AddSportRequestModel model)
         {
             if (ModelState.IsValid)
             {
@@ -45,15 +45,15 @@ namespace Teamify.Controllers
                 catch (Exception e)
                 {
                     ModelState.AddModelError("", "Something went wrong. Please try again");
-                    return View("CreateSportRequest", model);
+                    return View("Create", model);
                 }
                 return RedirectToAction("Index", "Home");
             }
-            return View("CreateSportRequest", model);
+            return View("Create", model);
         }
 
         [Authorize(Roles = "Administrator")]
-        public ActionResult SportsRequestsList()
+        public ActionResult List()
         {
             var model = DbContext.AddSportRequests.Select(x => new AddSportRequestModel
             {
@@ -66,7 +66,7 @@ namespace Teamify.Controllers
                 Status = x.RequestStatus
             }).Where(z => z.Status == AddSportRequestStatus.Pending).ToList();
 
-            return View("SportsRequestsList", model);
+            return View("List", model);
         }
 
         //[Authorize(Roles = "Administrator")]

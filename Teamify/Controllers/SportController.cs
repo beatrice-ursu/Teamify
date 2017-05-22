@@ -32,11 +32,11 @@ namespace Teamify.Controllers
                 RequestSportDescription = requestModel.SportDescription,
                 RequestSportRules = requestModel.SportRules
             };
-            return View("CreateSport", createModel);
+            return View("Create", createModel);
         }
 
         [HttpPost]
-        public ActionResult CreateSport(CreateSportModel model)
+        public ActionResult Create(CreateSportModel model)
         {
             if (ModelState.IsValid)
             {
@@ -63,14 +63,14 @@ namespace Teamify.Controllers
                 catch (Exception e)
                 {
                     ModelState.AddModelError("", "Something went wrong. Please try again");
-                    return RedirectToAction("CreateSport", model.AddSportRequestId);
+                    return RedirectToAction("Create", model.AddSportRequestId);
                 }
                 return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("CreateSport", model.AddSportRequestId);
+            return RedirectToAction("Create", model.AddSportRequestId);
         }
 
-        public ActionResult SportDetails(int id)
+        public ActionResult Details(int id)
         {
             var dbmodel = DbContext.Sports.FirstOrDefault(x => x.SportId == id);
 
@@ -84,7 +84,7 @@ namespace Teamify.Controllers
                 Rules = dbmodel.Rules
             };
 
-            return View("SportDetails", model);
+            return View("Details", model);
         }
 
         [AllowAnonymous]
