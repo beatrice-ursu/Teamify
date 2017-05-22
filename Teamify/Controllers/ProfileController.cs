@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Teamify.DL;
 using Teamify.Models.Profile;
 
 namespace Teamify.Controllers
@@ -11,6 +12,10 @@ namespace Teamify.Controllers
     [RoutePrefix("Profile")]
     public class ProfileController : BaseController
     {
+        public ProfileController(ApplicationDbContext dbContext) : base(dbContext)
+        {
+        }
+
         // GET: Profile
         [HttpGet]
         public ActionResult Index()
@@ -43,18 +48,20 @@ namespace Teamify.Controllers
         {
             if (ModelState.IsValid)
             {
-                var profileEnt = Db.UserProfiles.FirstOrDefault(x => x.UserProfileId == model.UserProfileId);
+                var profileEnt = DbContext.UserProfiles.FirstOrDefault(x => x.UserProfileId == model.UserProfileId);
                 if (profileEnt == null) return HttpNotFound();
 
                 profileEnt.FirstName = model.FirstName;
                 profileEnt.LastName = model.LastName;
                 profileEnt.Bio = model.Bio;
 
-                Db.SaveChanges();
+                DbContext.SaveChanges();
 
                 return RedirectToAction("Details");
             }
             return View(model);
         }
+
+        
     }
 }

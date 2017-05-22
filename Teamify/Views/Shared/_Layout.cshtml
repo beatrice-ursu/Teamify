@@ -1,4 +1,5 @@
 ﻿@using Teamify.Helpers
+@using Teamify.Models
 <!DOCTYPE html>
 <html>
 <head>
@@ -928,8 +929,8 @@
     <script src="~/Scripts/app.js"></script>
     <script src="~/Scripts/layout.js"></script>
     @RenderSection("scripts", required: false)
-    
-@Html.Partial("~/Views/Activity/_CreateActivityModal.cshtml")
+
+    @Html.Partial("~/Views/Activity/_CreateActivityModal.cshtml", new ActivityModel())
 
 </body>
 </html>

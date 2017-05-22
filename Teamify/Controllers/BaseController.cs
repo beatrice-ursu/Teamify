@@ -10,11 +10,11 @@ namespace Teamify.Controllers
 {
     public class BaseController : Controller
     {
-        protected readonly ApplicationDbContext Db; // => HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+        protected readonly ApplicationDbContext DbContext;
 
-        public BaseController()
+        public BaseController(ApplicationDbContext dbContext)
         {
-            Db = new ApplicationDbContext();
+            DbContext = dbContext;
         }
 
         protected User CurrentUser
@@ -22,7 +22,7 @@ namespace Teamify.Controllers
             get
             {
                 var userId = HttpContext.User.Identity.GetUserId();
-                return Db.Users.FirstOrDefault(x => x.Id.Equals(userId));
+                return DbContext.Users.FirstOrDefault(x => x.Id.Equals(userId));
                 //return !string.IsNullOrWhiteSpace(userId) ? HttpContext.GetOwinContext()
                 //    .GetUserManager<ApplicationUserManager>()
                 //    .FindById(userId) : null;

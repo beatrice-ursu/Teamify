@@ -4,6 +4,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Teamify.DL;
 using Teamify.DL.Entities;
 using Teamify.Helpers;
 using Teamify.Models.Sport;
@@ -13,9 +14,13 @@ namespace Teamify.Controllers
     [Authorize]
     public class SportController : BaseController
     {
+        public SportController(ApplicationDbContext dbContext) : base(dbContext)
+        {
+        }
+
         public ActionResult CreateSport(int id)
         {
-            var requestModel = Db.AddSportRequests.FirstOrDefault(x => x.AddSportRequestId == id);
+            var requestModel = DbContext.AddSportRequests.FirstOrDefault(x => x.AddSportRequestId == id);
 
             if (requestModel == null)
                 return HttpNotFound();
@@ -44,16 +49,16 @@ namespace Teamify.Controllers
                         Rules = model.NewSportRules
                     };
                     createSport.AddAudit(CurrentUser);
-                    Db.Sports.Add(createSport);
+                    DbContext.Sports.Add(createSport);
 
-                    var updateSport = Db.AddSportRequests.FirstOrDefault(x => x.AddSportRequestId == model.AddSportRequestId);
+                    var updateSport = DbContext.AddSportRequests.FirstOrDefault(x => x.AddSportRequestId == model.AddSportRequestId);
                     if (updateSport != null)
                     {
                         updateSport.RequestStatus = AddSportRequestStatus.Accepted;
-                        Db.AddSportRequests.AddOrUpdate(updateSport);
+                        DbContext.AddSportRequests.AddOrUpdate(updateSport);
                     }
 
-                    Db.SaveChanges();
+                    DbContext.SaveChanges();
                 }
                 catch (Exception e)
                 {
@@ -67,7 +72,7 @@ namespace Teamify.Controllers
 
         public ActionResult SportDetails(int id)
         {
-            var dbmodel = Db.Sports.FirstOrDefault(x => x.SportId == id);
+            var dbmodel = DbContext.Sports.FirstOrDefault(x => x.SportId == id);
 
             if (dbmodel == null)
                 return HttpNotFound();
@@ -82,9 +87,10 @@ namespace Teamify.Controllers
             return View("SportDetails", model);
         }
 
+        [AllowAnonymous]
         public ActionResult SportsList()
         {
-            var model = Db.Sports.Select(x => new SportModel
+            var model = DbContext.Sports.Select(x => new SportModel
             {
                 Name = x.Name,
                 SportId = x.SportId

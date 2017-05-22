@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Teamify.DL;
 using Teamify.DL.Entities;
 using Teamify.Helpers;
 using Teamify.Models.Sport;
@@ -12,6 +13,10 @@ namespace Teamify.Controllers
     [Authorize]
     public class SportRequestController : BaseController
     {
+        public SportRequestController(ApplicationDbContext dbContext) : base(dbContext)
+        {
+        }
+
         // GET: SportRequest
         public ActionResult CreateSportRequest()
         {
@@ -34,8 +39,8 @@ namespace Teamify.Controllers
                     };
                     addSportRequest.AddAudit(CurrentUser);
 
-                    Db.AddSportRequests.Add(addSportRequest);
-                    Db.SaveChanges();
+                    DbContext.AddSportRequests.Add(addSportRequest);
+                    DbContext.SaveChanges();
                 }
                 catch (Exception e)
                 {
@@ -50,7 +55,7 @@ namespace Teamify.Controllers
         [Authorize(Roles = "Administrator")]
         public ActionResult SportsRequestsList()
         {
-            var model = Db.AddSportRequests.Select(x => new AddSportRequestModel
+            var model = DbContext.AddSportRequests.Select(x => new AddSportRequestModel
             {
                 AddSportRequestId = x.AddSportRequestId,
                 SportName = x.SportName,
@@ -67,7 +72,7 @@ namespace Teamify.Controllers
         //[Authorize(Roles = "Administrator")]
         //public ActionResult SportRequestDetails(int id)
         //{
-        //    var modelDefault = Db.AddSportRequests.FirstOrDefault(x => x.AddSportRequestId == id);
+        //    var modelDefault = DbContext.AddSportRequests.FirstOrDefault(x => x.AddSportRequestId == id);
         //    var model = new AddSportRequestModel
         //    {
         //        AddSportRequestId = modelDefault.AddSportRequestId,

@@ -9,11 +9,11 @@ namespace Teamify.ApiControllers
 {
     public class BaseApiController : ApiController
     {
-        protected readonly ApplicationDbContext Db;
+        protected readonly ApplicationDbContext DbContext;
 
-        public BaseApiController()
+        public BaseApiController(ApplicationDbContext db)
         {
-            Db = new ApplicationDbContext();    
+            DbContext = db;
         }
 
         protected User CurrentUser
@@ -21,7 +21,7 @@ namespace Teamify.ApiControllers
             get
             {
                 var userId = HttpContext.Current.User.Identity.GetUserId();
-                return Db.Users.FirstOrDefault(x => x.Id.Equals(userId));
+                return DbContext.Users.FirstOrDefault(x => x.Id.Equals(userId));
             }
         }
     }

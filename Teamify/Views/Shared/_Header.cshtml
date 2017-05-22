@@ -19,7 +19,7 @@
         </li>
     </ul>
     <ul class="nav navbar-nav ml-auto">
-        @if (Request.IsAuthenticated)
+        @if (User.Identity.IsAuthenticated)
         {
             <li>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-activity-modal">

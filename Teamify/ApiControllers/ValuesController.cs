@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Teamify.DL;
 using Teamify.Models.Sport;
 
 namespace Teamify.ApiControllers
@@ -11,6 +12,10 @@ namespace Teamify.ApiControllers
     [RoutePrefix("api/Values")]
     public class ValuesController : BaseApiController
     {
+        public ValuesController(ApplicationDbContext db) : base(db)
+        {
+        }
+
         [Route("GetValues/{someId}")]
         [HttpGet]
         public IHttpActionResult GetValues(int someId)
@@ -30,7 +35,7 @@ namespace Teamify.ApiControllers
         [HttpGet]
         public IHttpActionResult GetSports()
         {
-            var sports = Db.Sports.Select(x => new SportModel
+            var sports = DbContext.Sports.Select(x => new SportModel
             {
                 Name = x.Name,
                 Description = x.Description,
