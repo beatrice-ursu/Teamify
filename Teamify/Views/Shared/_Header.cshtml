@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-<header class="app-header navbar">
+<header class="app-header navbar" ng-controller="headerController as vm">
     <button class="navbar-toggler mobile-sidebar-toggler d-lg-none" type="button">☰</button>
     @* TODO ADD LOGO PICTURE *@
     <a class="navbar-brand" href="@Url.Action("Index", "Home")"></a>
@@ -22,10 +22,9 @@
         @if (User.Identity.IsAuthenticated)
         {
             <li>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-activity-modal">
+                <button type="button" class="btn btn-success" ng-click="vm.openCreateActivityModal($event)">
                     Create Activity
                 </button>
-                @*<a class="btn btn-success" href="@Url.Action("CreateActivity", "Activity")"> Create activity</a>*@
             </li>
             <li class="nav-item d-md-down-none">
                 <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>

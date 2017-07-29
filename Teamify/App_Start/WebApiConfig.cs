@@ -3,6 +3,7 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
 using Newtonsoft.Json;
+using Teamify.Filters;
 
 namespace Teamify
 {
@@ -20,6 +21,8 @@ namespace Teamify
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Filters.Add(new ValidateModelAttribute());
 
             config.Formatters.Add(new BrowserJsonFormatter());
         }

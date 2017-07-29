@@ -26,8 +26,6 @@ namespace Teamify.ApiControllers
 
             }).ToList();
 
-            //var list = new List<UserModel>();
-
             return Ok(list);
         }
     }

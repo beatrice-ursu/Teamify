@@ -19,8 +19,8 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -241,6 +241,7 @@
     <Compile Include="DL\Mappings\ActivityMap.cs" />
     <Compile Include="DL\Mappings\UserMap.cs" />
     <Compile Include="Controllers\SportController.cs" />
+    <Compile Include="Filters\ValidateModelAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -283,7 +284,7 @@
     <Compile Include="Models\Account\ResetPasswordViewModel.cs" />
     <Compile Include="Models\Account\SendCodeViewModel.cs" />
     <Compile Include="Models\Account\VerifyCodeViewModel.cs" />
-    <Compile Include="Models\Activity\ActivityModel.cs" />
+    <Compile Include="Models\Activity\ActivityCreateModel.cs" />
     <Compile Include="Models\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="Models\Manage\ConfigureTwoFactorViewModel.cs" />
@@ -301,13 +302,15 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-material-datetimepicker.css" />
+    <Content Include="Content\angular-material.css" />
+    <Content Include="Content\angular-material.layout-attributes.css" />
+    <Content Include="Content\angular-material.layouts.css" />
+    <Content Include="Content\angular-material.layouts.ie_fixes.css" />
+    <Content Include="Content\bootstrap-datetimepicker-standalone.css" />
     <Content Include="Content\coreui.css" />
-    <Content Include="Content\dataTables.bootstrap.css" />
     <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\fonts\Material-Design-Icons.svg" />
-    <Content Include="Content\jquery.dataTables.css" />
-    <Content Include="Content\select2.css" />
     <Content Include="Content\simple-line-icons.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
@@ -570,14 +573,17 @@
     <Content Include="Content\img\flags\Zambia.png" />
     <Content Include="Content\img\flags\Zimbabwe.png" />
     <Content Include="Content\img\logo.png" />
-    <Content Include="Scripts\app.js" />
-    <Content Include="Scripts\createActivityModal.js" />
-    <Content Include="Scripts\layout.js" />
-    <Content Include="Scripts\libs\bootstrap-material-datetimepicker.js" />
+    <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\controllers\Activity\addActivityController.js" />
+    <Content Include="Scripts\app\controllers\Activity\addActivityTemplate.html" />
+    <Content Include="Scripts\app\controllers\Header\headerController.js" />
+    <Content Include="Scripts\libs\angular-animate.js" />
+    <Content Include="Scripts\libs\angular-aria.js" />
+    <Content Include="Scripts\libs\angular-material.js" />
+    <Content Include="Scripts\libs\angular.js" />
+    <Content Include="Scripts\coreui.config.js" />
     <Content Include="Scripts\libs\bootstrap.js" />
     <Content Include="Scripts\libs\Chart.js" />
-    <Content Include="Scripts\libs\dataTables.bootstrap.js" />
-    <Content Include="Scripts\libs\jquery.dataTables.js" />
     <Content Include="Scripts\libs\jquery.js" />
     <Content Include="Scripts\libs\modernizr-2.8.3.js" />
     <Content Include="Scripts\libs\moment.js" />
@@ -586,7 +592,6 @@
     <Content Include="Scripts\libs\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\libs\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\libs\respond.min.js" />
-    <Content Include="Scripts\libs\select2.full.js" />
     <Content Include="Scripts\libs\tether.js" />
     <Content Include="Scripts\views\charts.js" />
     <Content Include="Scripts\views\main.js" />
@@ -635,6 +640,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\app\controllers\Profile\" />
+    <Folder Include="Scripts\app\directives\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Layout\" />
   </ItemGroup>
@@ -700,6 +707,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\People\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

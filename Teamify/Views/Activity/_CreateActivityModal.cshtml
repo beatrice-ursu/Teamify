@@ -1,10 +1,10 @@
-﻿@model Teamify.Models.Activity.ActivityModel
+﻿@model Teamify.Models.Activity.ActivityCreateModel
 
-<div class="modal fade" id="create-activity-modal" tabindex="-1" role="dialog" aria-labelledby="CreateActivity" aria-hidden="true">
+<div class="modal fade" id="create-activity-modal" tabindex="-1" role="dialog" aria-labelledby="CreateActivity" aria-hidden="true" ng-controller="addActivityController as vm">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Create Activity</h4>
+                <h4 class="modal-title">{{vm.title}}</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -13,7 +13,6 @@
                 <div class="form-horizontal">
                     <form class="form-horizontal">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group row">
@@ -29,7 +28,7 @@
                                 <div class="form-group row">
                                     @Html.LabelFor(model => model.ExpireDate, htmlAttributes: new { @class = "form-control-label col-md-3" })
                                     <div class="col-md-9">
-                                        @Html.EditorFor(model => model.ExpireDate, new { htmlAttributes = new { @class = "form-control", id = "expireDate" } })
+                                        @Html.EditorFor(model => model.ExpireDate, new { htmlAttributes = new { @class = "form-control", id = "expire-date" } })
                                         @Html.ValidationMessageFor(model => model.ExpireDate, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -40,7 +39,7 @@
                                 <div class="form-group row">
                                     @Html.LabelFor(model => model.MinPlayers, htmlAttributes: new { @class = "form-control-label col-md-3" })
                                     <div class="col-md-9">
-                                        @Html.EditorFor(model => model.MinPlayers, new { htmlAttributes = new { @class = "form-control", id = "minPlayers" } })
+                                        @Html.EditorFor(model => model.MinPlayers, new { htmlAttributes = new { @class = "form-control", id = "min-players" } })
                                         @Html.ValidationMessageFor(model => model.MinPlayers, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -49,7 +48,7 @@
                                 <div class="form-group row">
                                     @Html.LabelFor(model => model.MaxPlayers, htmlAttributes: new { @class = "form-control-label col-md-3" })
                                     <div class="col-md-9">
-                                        @Html.EditorFor(model => model.MaxPlayers, new { htmlAttributes = new { @class = "form-control", id = "maxPlayers" } })
+                                        @Html.EditorFor(model => model.MaxPlayers, new { htmlAttributes = new { @class = "form-control", id = "max-players" } })
                                         @Html.ValidationMessageFor(model => model.MaxPlayers, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -60,7 +59,7 @@
                                 <div class="form-group row">
                                     @Html.LabelFor(model => model.MinPlayersRating, htmlAttributes: new { @class = "form-control-label col-md-3" })
                                     <div class="col-md-9">
-                                        @Html.EditorFor(model => model.MinPlayersRating, new { htmlAttributes = new { @class = "form-control", id = "minPlayersRating" } })
+                                        @Html.EditorFor(model => model.MinPlayersRating, new { htmlAttributes = new { @class = "form-control", id = "min-players-rating" } })
                                         @Html.ValidationMessageFor(model => model.MinPlayersRating, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -74,6 +73,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <md-select ng-model="vm.activity.selectedValue" placeholder="Select a value">
+                                <md-option ng-value="value" ng-repeat="value in vm.valuesDataSource">{{ value }}</md-option>
+                            </md-select>
                         </div>
                         @*<div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
@@ -92,5 +94,3 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-
-<script src="~/Scripts/createActivityModal.js"></script>
