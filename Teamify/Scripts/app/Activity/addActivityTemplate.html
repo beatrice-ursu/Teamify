@@ -30,10 +30,10 @@
                     <span ng-repeat="person in vm.activity.InvitedPeople">{{person.Text}}</span>
                 </div>
                 <div layout="row">
-                    <md-autocomplete flex md-input-name="Sport" md-selected-item="vm.activity.SportId" md-search-text="vm.sportsOptions.searchText"
-                                     md-item-text="sport.Text" md-items="sport in vm.sportsOptions.getSportsFiltered()" md-min-length="0" md-floating-label="Sport">
+                    <md-autocomplete flex md-input-name="InvitedPeople" md-selected-item="vm.peopleOptions.selectedItem" md-search-text="vm.peopleOptions.searchText"
+                                     md-no-cache="true" md-item-text="person.Text" md-items="person in vm.peopleOptions.getPeopleFiltered()" md-min-length="0" md-floating-label="Invite a person">
                         <md-item-template>
-                            <span md-highlight-text="searchText">{{sport.Text}}</span>
+                            <span md-highlight-text="searchText">{{person.Text}}</span>
                         </md-item-template>
                         <md-not-found>
                             No matches found.

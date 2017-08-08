@@ -6,14 +6,14 @@
     service.$inject = ['$http'];
     function service($http) {
         this.getPeople = getPeople;
-        this.filterPeople = filterPeople;
+        this.getPeopleFiltered = getPeopleFiltered;
 
         function getPeople() {
             return $http.get('/api/People/GetPeople');
         }
 
-        function filterPeople(filter, out) {
-            return $http.get(`/api/People/Filter/${filter}/${out}`);
+        function getPeopleFiltered(filter, out) {
+            return $http.post(`/api/People/Filter/${filter == null ? '' : filter}`, out);
         }
     }
 
