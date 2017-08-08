@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Http;
 using Teamify.DL;
+using Teamify.Models.People;
 using Teamify.Models.Sport;
 
 namespace Teamify.ApiControllers

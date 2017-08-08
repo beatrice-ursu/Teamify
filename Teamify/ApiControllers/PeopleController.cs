@@ -19,7 +19,7 @@ namespace Teamify.ApiControllers
         {
             var list = DbContext.UserProfiles.Select(x => new UserModel()
             {
-                Name = x.LastName + x.FirstName,
+                Name = x.LastName + " " + x.FirstName,
                 Bio = x.Bio,
                 Rating = x.Rating
             }).ToList();

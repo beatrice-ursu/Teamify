@@ -578,12 +578,15 @@
     <Content Include="Scripts\app\controllers\Activity\addActivityController.js" />
     <Content Include="Scripts\app\controllers\Activity\addActivityTemplate.html" />
     <Content Include="Scripts\app\controllers\Header\headerController.js" />
+    <Content Include="Scripts\app\controllers\People\peopleController.js" />
+    <Content Include="Scripts\app\controllers\People\peopleService.js" />
     <Content Include="Scripts\app\controllers\Profile\profileService.js" />
     <Content Include="Scripts\app\controllers\Sport\sportService.js" />
     <Content Include="Scripts\libs\angular-animate.js" />
     <Content Include="Scripts\libs\angular-aria.js" />
     <Content Include="Scripts\libs\angular-material.js" />
     <Content Include="Scripts\libs\angular-messages.js" />
+    <Content Include="Scripts\libs\angular-rating.js" />
     <Content Include="Scripts\libs\angular.js" />
     <Content Include="Scripts\coreui.config.js" />
     <Content Include="Scripts\libs\bootstrap.js" />

@@ -1,4 +1,6 @@
-﻿(function() {
+﻿(function () {
+    'use strict';
+
     angular.module('teamify.app').controller('headerController', controller);
 
     controller.$inject = ['$mdDialog'];
@@ -15,6 +17,10 @@
                 targetEvent: ev,
                 clickOutsideToClose: false
             }).then(successFunction, failFunction);
+        };
+
+        vm.peoplePage = function() {
+            alert("cv");
         };
 
         function successFunction() {

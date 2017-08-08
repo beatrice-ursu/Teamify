@@ -1,7 +1,7 @@
 ﻿(function() {
     'use strict';
 
-    angular.module('teamify.app', ['ngMaterial', 'ngMessages'])
+    angular.module('teamify.app', ['ngMaterial', 'ngMessages', 'angular-rating'])
         .config(configFunction);
 
     configFunction.$inject = ['$mdThemingProvider'];
