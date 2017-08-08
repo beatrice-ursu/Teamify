@@ -574,14 +574,14 @@
     <Content Include="Content\img\flags\Zimbabwe.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Scripts\app\app.js" />
-    <Content Include="Scripts\app\controllers\Activity\activityService.js" />
-    <Content Include="Scripts\app\controllers\Activity\addActivityController.js" />
-    <Content Include="Scripts\app\controllers\Activity\addActivityTemplate.html" />
-    <Content Include="Scripts\app\controllers\Header\headerController.js" />
-    <Content Include="Scripts\app\controllers\People\peopleController.js" />
-    <Content Include="Scripts\app\controllers\People\peopleService.js" />
-    <Content Include="Scripts\app\controllers\Profile\profileService.js" />
-    <Content Include="Scripts\app\controllers\Sport\sportService.js" />
+    <Content Include="Scripts\app\Activity\activityService.js" />
+    <Content Include="Scripts\app\Activity\addActivityController.js" />
+    <Content Include="Scripts\app\Activity\addActivityTemplate.html" />
+    <Content Include="Scripts\app\Header\headerController.js" />
+    <Content Include="Scripts\app\People\peopleController.js" />
+    <Content Include="Scripts\app\People\peopleService.js" />
+    <Content Include="Scripts\app\Profile\profileService.js" />
+    <Content Include="Scripts\app\Sport\sportService.js" />
     <Content Include="Scripts\libs\angular-animate.js" />
     <Content Include="Scripts\libs\angular-aria.js" />
     <Content Include="Scripts\libs\angular-material.js" />
@@ -647,7 +647,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\app\directives\" />
+    <Folder Include="Scripts\app\_directives\" />
+    <Folder Include="Scripts\app\_services\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Layout\" />
   </ItemGroup>
