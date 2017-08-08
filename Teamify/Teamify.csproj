@@ -210,6 +210,7 @@
     <Compile Include="ApiControllers\ActivityController.cs" />
     <Compile Include="ApiControllers\BaseApiController.cs" />
     <Compile Include="ApiControllers\PeopleController.cs" />
+    <Compile Include="ApiControllers\SportController.cs" />
     <Compile Include="ApiControllers\ValuesController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -266,6 +267,10 @@
     <Compile Include="Migrations\201705152117217_FixBaseEntity.Designer.cs">
       <DependentUpon>201705152117217_FixBaseEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707301452231_AddActiveFlag.cs" />
+    <Compile Include="Migrations\201707301452231_AddActiveFlag.Designer.cs">
+      <DependentUpon>201707301452231_AddActiveFlag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DL\ApplicationDbContext.cs" />
     <Compile Include="DL\Entities\User.cs" />
@@ -289,6 +294,7 @@
     <Compile Include="Models\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Models\People\UserModel.cs" />
     <Compile Include="Models\Profile\UserProfileModel.cs" />
+    <Compile Include="Models\Shared\SelectModel.cs" />
     <Compile Include="Models\Sport\AddSportRequestModel.cs" />
     <Compile Include="Models\Sport\CreateSportModel.cs" />
     <Compile Include="Models\Sport\SportModel.cs" />
@@ -568,12 +574,16 @@
     <Content Include="Content\img\flags\Zimbabwe.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\controllers\Activity\activityService.js" />
     <Content Include="Scripts\app\controllers\Activity\addActivityController.js" />
     <Content Include="Scripts\app\controllers\Activity\addActivityTemplate.html" />
     <Content Include="Scripts\app\controllers\Header\headerController.js" />
+    <Content Include="Scripts\app\controllers\Profile\profileService.js" />
+    <Content Include="Scripts\app\controllers\Sport\sportService.js" />
     <Content Include="Scripts\libs\angular-animate.js" />
     <Content Include="Scripts\libs\angular-aria.js" />
     <Content Include="Scripts\libs\angular-material.js" />
+    <Content Include="Scripts\libs\angular-messages.js" />
     <Content Include="Scripts\libs\angular.js" />
     <Content Include="Scripts\coreui.config.js" />
     <Content Include="Scripts\libs\bootstrap.js" />
@@ -634,7 +644,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\app\controllers\Profile\" />
     <Folder Include="Scripts\app\directives\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Layout\" />
@@ -662,6 +671,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705152117217_FixBaseEntity.resx">
       <DependentUpon>201705152117217_FixBaseEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707301452231_AddActiveFlag.resx">
+      <DependentUpon>201707301452231_AddActiveFlag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

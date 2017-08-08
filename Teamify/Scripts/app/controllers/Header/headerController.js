@@ -9,6 +9,7 @@
             $mdDialog.show({
                 controller: 'addActivityController',
                 controllerAs: 'vm',
+                bindToController: true,
                 templateUrl: '/Scripts/app/controllers/Activity/addActivityTemplate.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,

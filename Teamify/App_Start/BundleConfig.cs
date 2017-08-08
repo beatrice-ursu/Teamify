@@ -28,6 +28,7 @@ namespace Teamify
                     "~/Scripts/libs/angular-aria.js",
                     "~/Scripts/libs/angular-animate.js",
                     "~/Scripts/libs/angular-material.js",
+                    "~/Scripts/libs/angular-messages.js",
                     "~/Scripts/app/app.js"
                 ));
 
@@ -35,7 +36,8 @@ namespace Teamify
                     "~/Scripts/app/controllers/*.js",
                     "~/Scripts/app/controllers/Activity/*.js",
                     "~/Scripts/app/controllers/Header/*.js",
-                    "~/Scripts/app/controllers/Profile/*.js"
+                    "~/Scripts/app/controllers/Profile/*.js",
+                    "~/Scripts/app/controllers/Sport/*.js"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/angular/directives").Include(
                     "~/Scripts/app/directives/*.js"

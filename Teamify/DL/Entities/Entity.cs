@@ -22,5 +22,7 @@ namespace Teamify.DL.Entities
         public string UpdatedById { get; set; }
         [ForeignKey("UpdatedById")]
         public virtual User UpdatedBy { get; set; }
+        [Required]
+        public bool IsActive { get; set; }
     }
 }

@@ -22,7 +22,7 @@
         @if (User.Identity.IsAuthenticated)
         {
             <li>
-                <button type="button" class="btn btn-success" ng-click="vm.openCreateActivityModal($event)">
+                <button type="button" class="btn btn-success" aria-label="Create activity button" ng-click="vm.openCreateActivityModal($event)">
                     Create Activity
                 </button>
             </li>
