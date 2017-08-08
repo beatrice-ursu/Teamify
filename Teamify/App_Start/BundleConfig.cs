@@ -33,16 +33,15 @@ namespace Teamify
                     "~/Scripts/app/app.js"
                 ));
 
-            bundles.Add(new ScriptBundle("~/bundles/angular/controllers").Include(
-                    "~/Scripts/app/controllers/*.js",
-                    "~/Scripts/app/controllers/Activity/*.js",
-                    "~/Scripts/app/controllers/Header/*.js",
-                    "~/Scripts/app/controllers/Profile/*.js",
-                    "~/Scripts/app/controllers/People/*.js",
-                    "~/Scripts/app/controllers/Sport/*.js"
+            bundles.Add(new ScriptBundle("~/bundles/angular/app").Include(
+                    "~/Scripts/app/Activity/*.js",
+                    "~/Scripts/app/Header/*.js",
+                    "~/Scripts/app/Profile/*.js",
+                    "~/Scripts/app/People/*.js",
+                    "~/Scripts/app/Sport/*.js"
                 ));
-            bundles.Add(new ScriptBundle("~/bundles/angular/directives").Include(
-                    "~/Scripts/app/directives/*.js"
+            bundles.Add(new ScriptBundle("~/bundles/angular/_directives").Include(
+                    "~/Scripts/app/_directives/*.js"
                 ));
 
             //CSS
