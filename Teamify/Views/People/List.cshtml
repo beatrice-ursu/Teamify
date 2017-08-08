@@ -1,42 +1,35 @@
-﻿@model IEnumerable<Teamify.Models.People.UserModel>
-
-@{
+﻿@{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="row mt-4">
-    <div class="col-lg-12">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <table class="table table-striped table-bordered table-hover display" width="100%" id="people-grid">
-                    <thead>
-                    <tr>
-                        <th>UserProfileId</th>
-                        <th>Name</th>
-                        <th>Bio</th>
-                        <th>Rating</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
+
+<div ng-controller="peopleController as vm">
+    <div layout="row">
+        <md-input-container flex="30">
+            <label>Search person</label>
+            <input name="SearchFilter" ng-model="vm.searchFilter">
+        </md-input-container>
+    </div>
+    <div class="row">
+        <div class="col-md-3" ng-repeat="person in vm.people | filter: {Name: vm.searchFilter}">
+            <md-card md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{person.Name}}</span>
+                        <span class="md-subhead">
+                            <rating value="person.Rating" max="5"></rating>
+                        </span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-sm card-media"></div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button>Action 1</md-button>
+                    <md-button>Action 2</md-button>
+                </md-card-actions>
+            </md-card>
         </div>
     </div>
 </div>
 
-@section scripts {
-    <script type="text/javascript">
-        $('#people-grid')
-            .DataTable({
-                serverSide: true,
-                //ordering: true, 
-                //searching: true,
-                ajax: '/api/People/GetPeople',
-                columns: [
-                    { data: 'UserProfileId'},
-                    { data: 'Name' },
-                    { data: 'Bio' },
-                    { data: 'Rating' }
-                ]
-            });
-    </script>
-}
