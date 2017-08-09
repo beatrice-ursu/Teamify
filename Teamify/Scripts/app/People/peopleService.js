@@ -12,8 +12,8 @@
             return $http.get('/api/People/GetPeople');
         }
 
-        function getPeopleFiltered(filter, out) {
-            return $http.post(`/api/People/Filter/${filter == null ? '' : filter}`, out);
+        function getPeopleFiltered(filter, filterOut) {
+            return $http.post(`/api/People/Filter`, { Filter: filter, FilterOut: filterOut });
         }
     }
 

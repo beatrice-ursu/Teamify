@@ -292,6 +292,7 @@
     <Compile Include="Models\Manage\ManageLoginsViewModel.cs" />
     <Compile Include="Models\Manage\SetPasswordViewModel.cs" />
     <Compile Include="Models\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="Models\People\FilterPeopleModel.cs" />
     <Compile Include="Models\People\UserModel.cs" />
     <Compile Include="Models\Profile\UserProfileModel.cs" />
     <Compile Include="Models\Shared\SelectModel.cs" />

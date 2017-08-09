@@ -29,16 +29,16 @@ namespace Teamify.ApiControllers
             return Ok(list);
         }
 
-        [Route("Filter/{filter?}")]
+        [Route("Filter")]
         [HttpPost]
-        public IHttpActionResult Filter([FromUri] string filter = null, [FromBody] IEnumerable<SelectModel<string, int>> filterOut = null)
+        public IHttpActionResult Filter(FilterPeopleModel filter)
         {
-            var filterOutIds = filterOut?.Select(x => x.Value).ToList() ?? new List<int>();
+            var filterOutIds = filter.FilterOut?.Where(x => x != null).Select(x => x.Value).ToList() ?? new List<int>();
             var query = DbContext.UserProfiles.Where(userProfile => !filterOutIds.Contains(userProfile.UserProfileId));
-            if (!string.IsNullOrWhiteSpace(filter))
+            if (!string.IsNullOrWhiteSpace(filter.Filter))
             {
-                query = query.Where(userProfile => userProfile.FirstName.ToLower().Contains(filter.ToLower()) ||
-                                                   userProfile.LastName.ToLower().Contains(filter.ToLower()));
+                query = query.Where(userProfile => userProfile.FirstName.ToLower().Contains(filter.Filter.ToLower()) ||
+                                                   userProfile.LastName.ToLower().Contains(filter.Filter.ToLower()));
             }
             var results = query.Take(15).ToList();
             var result = results.Select(userProfile => new SelectModel<string, int>(

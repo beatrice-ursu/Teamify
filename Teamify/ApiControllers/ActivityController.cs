@@ -19,10 +19,10 @@ namespace Teamify.ApiControllers
         }
 
         [Authorize]
-        [Route("Create")]
+        [Route("AddActivity")]
         [HttpPost]
         [ValidateModel]
-        public IHttpActionResult Create(ActivityCreateModel model)
+        public IHttpActionResult AddActivity(ActivityCreateModel model)
         {
             if (model == null) return BadRequest("Model can't be empty.");
             try
@@ -37,9 +37,15 @@ namespace Teamify.ApiControllers
                     MinPlayers = model.MinPlayers,
                     MinPlayersRating = model.MinPlayersRating,
                     Sport = DbContext.Sports.FirstOrDefault(x => x.SportId == model.SportId),
-                    PossiblePlayers = DbContext.UserProfiles.Where(x => model.PossiblePlayers != null && model.PossiblePlayers.Contains(x.UserProfileId)).ToList(),
                     Players = DbContext.UserProfiles.Where(x => x.UserProfileId == CurrentUser.UserProfile.UserProfileId).ToList()
                 };
+                if (model.InvitedPeople.Count > 0)
+                {
+                    var invitedPeople = model.InvitedPeople.Select(x => x.Value).ToList();
+                    activity.PossiblePlayers = DbContext.UserProfiles
+                        .Where(x => invitedPeople.Contains(x.UserProfileId)).ToList();
+                }
+
                 activity.AddAudit(CurrentUser);
 
                 DbContext.Activities.Add(activity);

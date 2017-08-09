@@ -3,8 +3,8 @@
 
     angular.module('teamify.app').controller('addActivityController', controller);
 
-    controller.$inject = ['$mdDialog', 'sportService', 'peopleService', '$filter'];
-    function controller($mdDialog, sportService, peopleService, $filter) {
+    controller.$inject = ['$mdDialog', 'activityService', 'sportService', 'peopleService', '$filter', '$mdToast'];
+    function controller($mdDialog, activityService, sportService, peopleService, $filter, $mdToast) {
         var vm = this;
 
         vm.activity = {
@@ -20,6 +20,7 @@
 
         vm.sportsOptions = {
             searchText: null,
+            selectedItem: null,
             dataSource: [],
             initDataSource: function() {
                 sportService.getAvailableSports().then(function(response) {
@@ -30,24 +31,35 @@
                 return vm.sportsOptions.searchText
                     ? $filter('filter')(vm.sportsOptions.dataSource, vm.sportsOptions.searchText)
                     : vm.sportsOptions.dataSource;
+            },
+            onChange: function() {
+                vm.activity.SportId = this.selectedItem.Value;
             }
         };
 
         vm.peopleOptions = {
-            searchText: null,
-            selectedItem: null,
-            selectedItemChange: function(item) {
-                vm.activity.InvitedPeople.push(item);
-                this.selectedItem = null;
-            },
-            getPeopleFiltered: function () {
-                return peopleService.getPeopleFiltered(this.searchText, vm.activity.InvitedPeople);
+            getPeopleFiltered: function (filter) {
+                return peopleService.getPeopleFiltered(filter, vm.activity.InvitedPeople).then(
+                    function(response) {
+                        return response.data;
+                    });
             }
         };
 
-        vm.save = function () {
-            $mdDialog.hide();
+        vm.save = function() {
+            if (vm.createActivity.$valid) {
+                activityService.addActivity(vm.activity).then(_addActivitySuccess, _addActivityFail);
+            }
         };
+
+        function _addActivitySuccess(response) {
+            $mdToast.showSimple('Activity created successfully!');
+            $mdDialog.hide();
+        }
+
+        function _addActivityFail(err) {
+            $mdToast.showSimple('Activity creation failed! Please try again.');
+        }
 
         vm.cancel = function () {
             $mdDialog.cancel();

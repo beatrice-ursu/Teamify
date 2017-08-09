@@ -1,5 +1,5 @@
 ﻿<md-dialog aria-label="Create Activity" flex="30">
-    <form ng-cloak name="createActivity">
+    <form ng-cloak novalidate name="vm.createActivity" ng-submit="vm.save()">
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <h2>Create Activity</h2>
@@ -12,10 +12,12 @@
         <md-dialog-content>
             <div class="md-dialog-content">
                 <div layout="row">
-                    <md-autocomplete flex md-input-name="Sport" required md-selected-item="vm.activity.SportId" md-search-text="vm.sportsOptions.searchText" 
-                                     md-item-text="sport.Text" md-items="sport in vm.sportsOptions.getSportsFiltered()" md-min-length="0" md-floating-label="Sport">
+                    <md-autocomplete flex md-input-name="Sport" required
+                                     md-selected-item="vm.sportsOptions.selectedItem" md-search-text="vm.sportsOptions.searchText"
+                                     md-item-text="sport.Text" md-items="sport in vm.sportsOptions.getSportsFiltered()"
+                                     md-min-length="0" md-floating-label="Sport" md-selected-item-change="vm.sportsOptions.onChange()">
                         <md-item-template>
-                            <span md-highlight-text="searchText">{{sport.Text}}</span>
+                            <span md-highlight-text="vm.sportsOptions.searchText">{{sport.Text}}</span>
                         </md-item-template>
                         <md-not-found>
                             No matches found.
@@ -26,19 +28,17 @@
                     </md-autocomplete>
                 </div>
                 <div layout="row">
-                    <label>Invite people</label>
-                    <span ng-repeat="person in vm.activity.InvitedPeople">{{person.Text}}</span>
-                </div>
-                <div layout="row">
-                    <md-autocomplete flex md-input-name="InvitedPeople" md-selected-item="vm.peopleOptions.selectedItem" md-search-text="vm.peopleOptions.searchText"
-                                     md-no-cache="true" md-item-text="person.Text" md-items="person in vm.peopleOptions.getPeopleFiltered()" md-min-length="0" md-floating-label="Invite a person">
-                        <md-item-template>
-                            <span md-highlight-text="searchText">{{person.Text}}</span>
-                        </md-item-template>
-                        <md-not-found>
-                            No matches found.
-                        </md-not-found>
-                    </md-autocomplete>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <md-contact-chips flex
+                                          ng-model="vm.activity.InvitedPeople"
+                                          md-contacts="vm.peopleOptions.getPeopleFiltered($query)"
+                                          md-contact-name="Text"
+                                          md-require-match="true"
+                                          md-highlight-flags="i"
+                                          filter-selected="true"
+                                          placeholder="Invite people">
+                        </md-contact-chips>
+                    </md-input-container>
                 </div>
                 <div layout="row">
                     <md-input-container class="md-block" flex-gt-sm>
@@ -100,7 +100,7 @@
 
         <md-dialog-actions layout="row">
             <span flex></span>
-            <md-button class="md-raised md-primary" ng-click="vm.save()">
+            <md-button class="md-raised md-primary" type="submit">
                 Save
             </md-button>
             <md-button class="md-raised md-default" ng-click="vm.cancel()">

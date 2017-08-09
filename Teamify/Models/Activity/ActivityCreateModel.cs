@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Teamify.Models.Shared;
 
 namespace Teamify.Models.Activity
 {
@@ -28,7 +29,6 @@ namespace Teamify.Models.Activity
         [Display(Name = "Min. rating")]
         public float MinPlayersRating { get; set; }
 
-        [Required]
         public string Description { get; set; }
 
         [Required]
@@ -40,6 +40,6 @@ namespace Teamify.Models.Activity
         public int SportId { get; set; }
 
         [Display(Name = "Invite players")]
-        public IEnumerable<int> PossiblePlayers { get; set; }
+        public IList<SelectModel<string, int>> InvitedPeople { get; set; }
     }
 }
